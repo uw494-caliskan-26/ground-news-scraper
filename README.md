@@ -75,7 +75,7 @@ pip install tkinter  # Usually included with Python
    ```bash
    # GUI Interface
    python gui.py
-   
+
    # Command Line Interface
    python g.py "https://ground.news/article/your-article-url"
    ```

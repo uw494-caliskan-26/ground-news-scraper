@@ -4,7 +4,7 @@ import threading
 import subprocess
 import sys
 import os
-from datetime import datetime
+import datetime
 
 class GroundNewsScraperGUI:
     def __init__(self, root):
@@ -13,65 +13,65 @@ class GroundNewsScraperGUI:
         self.root.geometry("1000x700")
         self.root.resizable(True, True)
         self.root.configure(bg='#f0f2f5')
-        
+
         # Set minimum window size
         self.root.minsize(800, 600)
-        
+
         # Variables
         self.is_running = False
         self.process = None
-        
+
         # Configure modern style
         self.setup_style()
         self.setup_ui()
         self.create_context_menu()
-        
+
     def setup_style(self):
         """Configure modern styling for the application"""
         style = ttk.Style()
         style.theme_use('clam')
-        
+
         # Configure modern colors and styles
-        style.configure('Title.TLabel', 
+        style.configure('Title.TLabel',
                        font=('Segoe UI', 20, 'bold'),
                        foreground='#1a365d',
                        background='#f0f2f5')
-        
+
         style.configure('Subtitle.TLabel',
                        font=('Segoe UI', 10),
                        foreground='#4a5568',
                        background='#f0f2f5')
-        
+
         style.configure('Modern.TButton',
                        font=('Segoe UI', 10),
                        padding=10)
-        
+
         style.configure('Accent.TButton',
                        font=('Segoe UI', 10, 'bold'),
                        padding=10)
-        
+
         style.configure('Success.TButton',
                        font=('Segoe UI', 9),
                        padding=8)
-        
+
         style.configure('Danger.TButton',
                        font=('Segoe UI', 9),
                        padding=8)
-        
+
         # Configure Entry style
         style.configure('Modern.TEntry',
                        font=('Segoe UI', 10),
                        padding=8)
-        
+
         # Configure frame styles
         style.configure('Card.TFrame',
                        background='white',
                        relief='flat',
                        borderwidth=1)
-        
+
         style.configure('Main.TFrame',
                        background='#f0f2f5')
-    
+
     def create_context_menu(self):
         """Create right-click context menu for URL entry"""
         self.context_menu = Menu(self.root, tearoff=0)
@@ -81,7 +81,7 @@ class GroundNewsScraperGUI:
         self.context_menu.add_separator()
         self.context_menu.add_command(label="🗑️ Clear", command=self.clear_url)
         self.context_menu.add_command(label="📌 Select All", command=self.select_all_text)
-    
+
     def paste_from_clipboard(self):
         """Paste text from clipboard to URL entry"""
         try:
@@ -89,7 +89,7 @@ class GroundNewsScraperGUI:
             self.url_var.set(clipboard_text)
         except tk.TclError:
             pass  # Clipboard is empty or inaccessible
-    
+
     def cut_text(self):
         """Cut selected text from URL entry"""
         try:
@@ -100,7 +100,7 @@ class GroundNewsScraperGUI:
                 self.url_entry.delete("sel.first", "sel.last")
         except tk.TclError:
             pass
-    
+
     def copy_text(self):
         """Copy selected text from URL entry"""
         try:
