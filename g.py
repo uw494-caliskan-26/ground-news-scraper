@@ -3,6 +3,7 @@ import json
 import sys
 import os
 import uuid
+from tqdm import tqdm
 from datetime import datetime
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -61,7 +62,7 @@ def fetch_article_data(url):
             left_summary_button = driver.find_element(By.ID, "left-summary-button")
             if left_summary_button.is_enabled() and left_summary_button.is_displayed():
                 ActionChains(driver).move_to_element(left_summary_button).click().perform()
-                time.sleep(2)  # Wait for the points to load
+                time.sleep(1)  # Wait for the points to load
                 article_data['left_points'] = [point.text for point in driver.find_elements(By.XPATH, "/html/body/main/div/article/div/div/div[1]/div[2]/div[3]/div/div/div[2]/div[1]/ul/li")]
                 print("Left Points extracted.")
             else:
@@ -74,7 +75,7 @@ def fetch_article_data(url):
             center_summary_button = driver.find_element(By.ID, "center-summary-button")
             if center_summary_button.is_enabled() and center_summary_button.is_displayed():
                 ActionChains(driver).move_to_element(center_summary_button).click().perform()
-                time.sleep(2)  # Wait for the points to load
+                time.sleep(1)  # Wait for the points to load
                 article_data['center_points'] = [point.text for point in driver.find_elements(By.XPATH, "/html/body/main/div/article/div/div/div[1]/div[2]/div[3]/div/div/div[2]/div[1]/ul/li")]
                 print("Center Points extracted.")
             else:
@@ -87,7 +88,7 @@ def fetch_article_data(url):
             right_summary_button = driver.find_element(By.ID, "right-summary-button")
             if right_summary_button.is_enabled() and right_summary_button.is_displayed():
                 ActionChains(driver).move_to_element(right_summary_button).click().perform()
-                time.sleep(2)  # Wait for the points to load
+                time.sleep(1)  # Wait for the points to load
                 article_data['right_points'] = [point.text for point in driver.find_elements(By.XPATH, "/html/body/main/div/article/div/div/div[1]/div[2]/div[3]/div/div/div[2]/div[1]/ul/li")]
                 print("Right Points extracted.")
             else:
@@ -103,7 +104,7 @@ def fetch_article_data(url):
                     # Check if the "more stories" button exists and is clickable
                     more_stories_button = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID, "more-stories")))
                     ActionChains(driver).move_to_element(more_stories_button).click().perform()
-                    time.sleep(2)
+                    time.sleep(1)
                     stories_loaded += 1
                     pbar.update(1)
                     pbar.set_postfix({"Batches loaded": stories_loaded})
@@ -157,7 +158,9 @@ def fetch_article_data(url):
 
 
         # Generate unique Story ID
-        story_id = f"GN_{datetime.now().strftime('%Y%m%d_%H%M%S')}_{str(uuid.uuid4())[:8]}"
+        # story_id = f"GN_{datetime.now().strftime('%Y%m%d_%H%M%S')}_{str(uuid.uuid4())[:8]}"
+        story_id = f"1"
+        
         sid = str(story_id)
         print(f"Generated Story ID: {sid}")
 
@@ -206,9 +209,154 @@ def fetch_article_data(url):
         driver.quit()
         print("Browser closed.")
 
+def scrape_all_topics_from_homepage():
+    options = webdriver.ChromeOptions()
+    options.add_argument("--start-maximized")
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+    try:
+        driver.get("https://groundnews.org")
+        time.sleep(1)
+        print("Loaded Ground News homepage")
+        topic_links = []
+        try:
+            WebDriverWait(driver, 10).until(EC.presence_of_all_elements_located(
+                (By.XPATH, "//html/body/main/article/div[2]/div[5]/div[1]/div[3]/div/a")
+            ))
+            topic_elements = driver.find_elements(By.XPATH, "//html/body/main/article/div[2]/div[5]/div[1]/div[3]/div/a")
+            print(f"Found {len(topic_elements)} topics")
+            for element in topic_elements:
+                href = element.get_attribute('href')
+                if href:
+                    topic_links.append(href)
+        except Exception as e:
+            print(f"Error finding topic links: {e}")
+            return
+        all_data = []
+        for idx, topic_url in enumerate(tqdm(topic_links, desc="Processing topics")):
+            print(f"\n[{idx + 1}/{len(topic_links)}] {topic_url}")
+            try:
+                driver.get(topic_url)
+                time.sleep(0.5)
+                story_id = f"GN_{datetime.now().strftime('%Y%m%d_%H%M%S')}_{str(uuid.uuid4())[:8]}"
+                sid = str(story_id)
+                article_data = {}
+                try:
+                    article_data['title'] = driver.find_element(By.ID, "titleArticle").text
+                except:
+                    article_data['title'] = "N/A"
+                try:
+                    article_data['total_source'] = driver.find_element(By.XPATH, "/html/body/main/div/article/div/div/div[4]/div[1]/div/div/span[2]").text
+                except:
+                    article_data['total_source'] = "N/A"
+                try:
+                    article_data['leaning_left'] = driver.find_element(By.XPATH, "/html/body/main/div/article/div/div/div[4]/div[1]/div/span[2]").text
+                except:
+                    article_data['leaning_left'] = "N/A"
+                try:
+                    article_data['leaning_right'] = driver.find_element(By.XPATH, "/html/body/main/div/article/div/div/div[4]/div[1]/div/span[4]").text
+                except:
+                    article_data['leaning_right'] = "N/A"
+                try:
+                    article_data['center'] = driver.find_element(By.XPATH, "//*[@id='main']/div/article/div/div/div[4]/div[1]/div/span[6]").text
+                except:
+                    article_data['center'] = "N/A"
+                article_data['left_points'] = []
+                article_data['center_points'] = []
+                article_data['right_points'] = []
+                try:
+                    left_summary_button = driver.find_element(By.ID, "left-summary-button")
+                    if left_summary_button.is_enabled() and left_summary_button.is_displayed():
+                        ActionChains(driver).move_to_element(left_summary_button).click().perform()
+                        time.sleep(1)
+                        article_data['left_points'] = [point.text for point in driver.find_elements(By.XPATH, "/html/body/main/div/article/div/div/div[1]/div[2]/div[3]/div/div/div[2]/div[1]/ul/li")]
+                except:
+                    pass
+                try:
+                    center_summary_button = driver.find_element(By.ID, "center-summary-button")
+                    if center_summary_button.is_enabled() and center_summary_button.is_displayed():
+                        ActionChains(driver).move_to_element(center_summary_button).click().perform()
+                        time.sleep(1)
+                        article_data['center_points'] = [point.text for point in driver.find_elements(By.XPATH, "/html/body/main/div/article/div/div/div[1]/div[2]/div[3]/div/div/div[2]/div[1]/ul/li")]
+                except:
+                    pass
+                try:
+                    right_summary_button = driver.find_element(By.ID, "right-summary-button")
+                    if right_summary_button.is_enabled() and right_summary_button.is_displayed():
+                        ActionChains(driver).move_to_element(right_summary_button).click().perform()
+                        time.sleep(1)
+                        article_data['right_points'] = [point.text for point in driver.find_elements(By.XPATH, "/html/body/main/div/article/div/div/div[1]/div[2]/div[3]/div/div/div[2]/div[1]/ul/li")]
+                except:
+                    pass
+                while True:
+                    try:
+                        more_stories_button = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID, "more-stories")))
+                        ActionChains(driver).move_to_element(more_stories_button).click().perform()
+                        time.sleep(1)
+                    except:
+                        break
+                article_data['sources'] = []
+                source_elements = driver.find_elements(By.ID, "article-summary")
+                for source_element in source_elements:
+                    try:
+                        source = {}
+                        try:
+                            source['news_title'] = source_element.find_element(By.XPATH, ".//a/h4").text
+                        except:
+                            source['news_title'] = "N/A"
+                        try:
+                            source['news_link'] = source_element.find_element(By.XPATH, "./div/a").get_attribute('href')
+                        except:
+                            source['news_link'] = "N/A"
+                        try:
+                            source['bias'] = source_element.find_element(By.XPATH, ".//a[contains(@id, 'article-source-bias')]/div").text
+                        except:
+                            source['bias'] = "unknown"
+                        try:
+                            if source['news_link'] != "N/A":
+                                downloaded = trafilatura.fetch_url(source['news_link'])
+                                source['text'] = trafilatura.extract(downloaded)
+                            else:
+                                source['text'] = None
+                        except:
+                            source['text'] = None
+                        article_data['sources'].append(source)
+                    except:
+                        continue
+                structured_data = {
+                    'story_id': sid,
+                    'metadata': {'title': article_data.get('title', ''), 'timestamp': datetime.now().isoformat(), 'url': topic_url},
+                    'bias_distribution': {'total_sources': article_data.get('total_source', ''), 'leaning_left': article_data.get('leaning_left', ''), 'center': article_data.get('center', ''), 'leaning_right': article_data.get('leaning_right', '')},
+                    'perspective_summaries': {'left': article_data.get('left_points', []), 'center': article_data.get('center_points', []), 'right': article_data.get('right_points', [])},
+                    'sources': article_data.get('sources', [])
+                }
+                all_data.append(structured_data)
+                json_filename = os.path.join('json', f"{sid}.json")
+                try:
+                    os.makedirs('json', exist_ok=True)
+                    with open(json_filename, 'w', encoding='utf-8') as file:
+                        json.dump(structured_data, file, indent=2, ensure_ascii=False)
+                except:
+                    pass
+            except Exception as e:
+                print(f"Error: {e}")
+                continue
+        try:
+            master_filename = os.path.join('json', f"all_topics_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json")
+            os.makedirs('json', exist_ok=True)
+            with open(master_filename, 'w', encoding='utf-8') as file:
+                json.dump(all_data, file, indent=2, ensure_ascii=False)
+            print(f"\nMaster file saved: {master_filename}")
+        except Exception as e:
+            print(f"Error saving master: {e}")
+    except Exception as e:
+        print(f"Error: {e}")
+    finally:
+        driver.quit()
+        print("Browser closed.")
+
 if __name__ == "__main__":
     if len(sys.argv) > 1:
         url = sys.argv[1]
         fetch_article_data(url)
     else:
-        print("Please provide a URL as a command-line argument.")
+        scrape_all_topics_from_homepage()

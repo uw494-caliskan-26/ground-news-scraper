@@ -192,11 +192,21 @@ class GroundNewsScraperGUI:
         # Bind right-click context menu
         self.url_entry.bind("<Button-3>", self.show_context_menu)
         
+        # Buttons frame
+        buttons_frame = ttk.Frame(url_card)
+        buttons_frame.grid(row=1, column=2, pady=5, padx=(10, 0), sticky="ew")
+        
         # Fetch button with modern styling
-        self.fetch_button = ttk.Button(url_card, text="🚀 Fetch Data", 
+        self.fetch_button = ttk.Button(buttons_frame, text="🚀 Fetch Data", 
                                       command=self.start_scraping, 
                                       style="Accent.TButton")
-        self.fetch_button.grid(row=1, column=2, pady=5, padx=(10, 0))
+        self.fetch_button.pack(side=tk.LEFT, padx=(0, 5))
+        
+        # Scrape All Topics button
+        self.scrape_all_button = ttk.Button(buttons_frame, text="🌐 All Topics", 
+                                           command=self.scrape_all_topics, 
+                                           style="Accent.TButton")
+        self.scrape_all_button.pack(side=tk.LEFT)
         
         # Progress section
         progress_frame = ttk.Frame(url_card)
@@ -315,7 +325,7 @@ class GroundNewsScraperGUI:
     
     def log_message(self, message):
         """Add message to console with timestamp and color coding"""
-        timestamp = datetime.now().strftime("%H:%M:%S")
+        timestamp = datetime.datetime.now().strftime("%H:%M:%S")
         formatted_message = f"[{timestamp}] {message}\n"
         
         self.console_text.config(state=tk.NORMAL)
@@ -401,6 +411,83 @@ class GroundNewsScraperGUI:
         self.scraping_thread.daemon = True
         self.scraping_thread.start()
     
+    def scrape_all_topics(self):
+        """Start scraping all topics from Ground News homepage"""
+        if self.is_running:
+            messagebox.showwarning("⚠️ Already Running", "Scraping is already in progress!\nPlease wait for the current operation to complete.")
+            return
+        
+        # Start scraping in a separate thread
+        self.is_running = True
+        self.fetch_button.config(state=tk.DISABLED)
+        self.scrape_all_button.config(state=tk.DISABLED)
+        self.stop_button.config(state=tk.NORMAL)
+        self.progress_bar.start()
+        self.progress_var.set("🚀 Initializing scraper for all topics...")
+        self.status_var.set("🔄 Scraping all topics in progress...")
+        
+        # Clear console and add header
+        self.clear_console()
+        self.log_message("🌍 Ground News Scraper - All Topics Mode")
+        self.log_message("=" * 50)
+        self.log_message("🎯 Mode: Scrape all topics from homepage")
+        self.log_message("🔧 Initializing Chrome WebDriver...")
+        
+        # Start scraping thread
+        self.scraping_thread = threading.Thread(target=self.run_scraper_all_topics)
+        self.scraping_thread.daemon = True
+        self.scraping_thread.start()
+    
+    def run_scraper_all_topics(self):
+        """Run the scraper subprocess for all topics"""
+        try:
+            # Check if g.py exists
+            script_path = os.path.join(os.path.dirname(__file__), 'g.py')
+            if not os.path.exists(script_path):
+                self.log_message("ERROR: g.py not found in the same directory!")
+                self.scraping_finished(False)
+                return
+            
+            # Prepare command without URL (triggers all topics mode)
+            cmd = [sys.executable, script_path]
+            
+            self.log_message(f"Running command: {' '.join(cmd)}")
+            
+            # Start the process
+            self.process = subprocess.Popen(
+                cmd,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,
+                text=True,
+                bufsize=1,
+                universal_newlines=True
+            )
+            
+            # Read output line by line
+            if self.process.stdout:
+                while True:
+                    output = self.process.stdout.readline()
+                    if output == '' and self.process.poll() is not None:
+                        break
+                    if output:
+                        # Use after() to safely update GUI from thread
+                        self.root.after(0, self.log_message, output.strip())
+            
+            # Get return code
+            return_code = self.process.poll()
+            
+            if return_code == 0:
+                self.root.after(0, self.log_message, "✅ Scraping all topics completed successfully!")
+                self.root.after(0, self.scraping_finished, True)
+            else:
+                self.root.after(0, self.log_message, f"❌ Scraping failed with exit code {return_code}")
+                self.root.after(0, self.scraping_finished, False)
+                
+        except Exception as e:
+            error_msg = f"Error running scraper: {str(e)}"
+            self.root.after(0, self.log_message, error_msg)
+            self.root.after(0, self.scraping_finished, False)
+    
     def run_scraper(self, url):
         """Run the scraper subprocess"""
         try:
@@ -463,6 +550,7 @@ class GroundNewsScraperGUI:
         """Called when scraping is finished"""
         self.is_running = False
         self.fetch_button.config(state=tk.NORMAL)
+        self.scrape_all_button.config(state=tk.NORMAL)
         self.stop_button.config(state=tk.DISABLED)
         self.progress_bar.stop()
         
