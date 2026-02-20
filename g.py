@@ -28,7 +28,7 @@ def fetch_article_data(url):
 
         # Print completion message
         print("Page loaded successfully.")
-        
+
         # Extract data using XPath
         article_data = {}
 
@@ -51,12 +51,12 @@ def fetch_article_data(url):
         # Extract Center
         article_data['center'] = driver.find_element(By.XPATH, "//*[@id='main']/div/article/div/div/div[4]/div[1]/div/span[6]").text
         print("Center extracted.")
-        
+
         # Initialize summary points arrays
         article_data['left_points'] = []
         article_data['center_points'] = []
         article_data['right_points'] = []
-        
+
         # Check and extract Left Points
         try:
             left_summary_button = driver.find_element(By.ID, "left-summary-button")
@@ -125,7 +125,7 @@ def fetch_article_data(url):
                 
                 # Extract news title from the h4 element, relative to the article-summary
                 news_title_element = source_element.find_element(By.XPATH, ".//a/h4")
-                source['news_title'] = news_title_element.text               
+                source['news_title'] = news_title_element.text
                 
                 
                 # Extract news link from the anchor tag, relative to the article-summary
@@ -219,11 +219,17 @@ def scrape_all_topics_from_homepage():
         print("Loaded Ground News homepage")
         topic_links = []
         try:
+            while True:
+                    try:
+                        more_stories_button = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID, "more-stories")))
+                        ActionChains(driver).move_to_element(more_stories_button).click().perform()
+                        time.sleep(1)
+                    except:
+                        break
             WebDriverWait(driver, 10).until(EC.presence_of_all_elements_located(
                 (By.XPATH, "/html/body/main/article/div[16]")
             ))
-            topic_elements = driver.find_elements(By.XPATH, "/html/body/main/article/div[16]/div[2]")
-            print(f"Found {len(topic_elements)} topics")
+            topic_elements = driver.find_elements(By.CSS_SELECTOR, '[data-test-id="story-item"]')
             for element in topic_elements:
                 href = element.get_attribute('href')
                 if href:
@@ -232,8 +238,6 @@ def scrape_all_topics_from_homepage():
             print(f"Error finding topic links: {e}")
             return
 
-        article_links = []
-        for idx, topic_url in enumerate(tqdm(topic_links, desc="Processing topics")):
             print(f"\n[{idx + 1}/{len(topic_links)}] {topic_url}")
             try:
                 driver.get(topic_url)
@@ -245,31 +249,8 @@ def scrape_all_topics_from_homepage():
                     article_data['title'] = driver.find_element(By.ID, "titleArticle").text
                 except:
                     article_data['title'] = "N/A"
-                try:
-                    article_data['total_source'] = driver.find_element(By.XPATH, "/html/body/main/article/div[16]/div[2]/div/a").text
-                except:
-                    article_data['total_source'] = "N/A"
-                try:
-                    article_data['leaning_left'] = driver.find_element(By.XPATH, "/html/body/main/div/article/div/div/div[4]/div[1]/div/span[2]").text
-                except:
-                    article_data['leaning_left'] = "N/A"
-                try:
-                    article_data['leaning_right'] = driver.find_element(By.XPATH, "/html/body/main/div/article/div/div/div[4]/div[1]/div/span[4]").text
-                except:
-                    article_data['leaning_right'] = "N/A"
-                try:
-                    article_data['center'] = driver.find_element(By.XPATH, "//*[@id='main']/div/article/div/div/div[4]/div[1]/div/span[6]").text
-                except:
-                    article_data['center'] = "N/A"
 
-                while True:
-                    try:
-                        more_stories_button = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID, "more-stories")))
-                        ActionChains(driver).move_to_element(more_stories_button).click().perform()
-                        time.sleep(1)
-                    except:
-                        break
-                article_data['sources'] = []
+
                 source_elements = driver.find_elements(By.ID, "article-summary")
                 for source_element in source_elements:
                     try:
@@ -312,7 +293,7 @@ def scrape_all_topics_from_homepage():
             master_filename = os.path.join('json', f"all_topics_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json")
             os.makedirs('json', exist_ok=True)
             with open(master_filename, 'w', encoding='utf-8') as file:
-                json.dump(article_links, file, indent=2, ensure_ascii=False)
+                json.dump(topic_links, file, indent=2, ensure_ascii=False)
             print(f"\nMaster file saved: {master_filename}")
         except Exception as e:
             print(f"Error saving master: {e}")
