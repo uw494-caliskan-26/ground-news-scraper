@@ -18,12 +18,13 @@ import trafilatura
 def fetch_article_data(url):
     # Setup WebDriver
     options = webdriver.ChromeOptions()
-    options.add_argument("--start-maximized")  # Make sure the browser window is maximized
+    options.add_argument("--start-maximized") # Make sure the browser window is maximized
+    options.add_argument("--incognito")
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
     try:
         driver.get(url)
-        time.sleep(1)  # Wait for the page to load completely
+        time.sleep(1) # Wait for the page to load completely
 
         # Print completion message
         print("Page loaded successfully.")
@@ -112,7 +113,6 @@ def fetch_article_data(url):
                     break
 
         # Extract Sources using the correct XPath structure
-        # Extract Sources using the correct XPath structure
         article_data['sources'] = []
 
         # Find all source elements
@@ -121,11 +121,10 @@ def fetch_article_data(url):
         for source_element in tqdm(source_elements, desc="Processing sources", unit="source"):
             try:
                 source = {}
-                
+            
                 # Extract news title from the h4 element, relative to the article-summary
                 news_title_element = source_element.find_element(By.XPATH, ".//a/h4")
                 source['news_title'] = news_title_element.text               
-                
                 
                 # Extract news link from the anchor tag, relative to the article-summary
                 news_link_element = source_element.find_element(By.XPATH, "./div/a")
@@ -154,7 +153,6 @@ def fetch_article_data(url):
                 continue
 
         print(f"Sources extracted. Total: {len(article_data['sources'])} sources")
-
 
         # Generate unique Story ID
         story_id = f"GN_{datetime.now().strftime('%Y%m%d_%H%M%S')}_{str(uuid.uuid4())[:8]}"

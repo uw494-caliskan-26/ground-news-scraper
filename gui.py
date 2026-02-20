@@ -315,7 +315,7 @@ class GroundNewsScraperGUI:
     
     def log_message(self, message):
         """Add message to console with timestamp and color coding"""
-        timestamp = datetime.now().strftime("%H:%M:%S")
+        timestamp = datetime.datetime.now().strftime("%H:%M:%S")
         formatted_message = f"[{timestamp}] {message}\n"
         
         self.console_text.config(state=tk.NORMAL)
