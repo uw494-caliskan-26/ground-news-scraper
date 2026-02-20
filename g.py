@@ -26,36 +26,56 @@ def collect_latest_stories(driver):
     driver.get(BASE_URL)
     print("Homepage loaded.")
 
+    # Wait for main article to load
     try:
-        # Wait for article cards to appear
-        WebDriverWait(driver, 10).until(
-            EC.presence_of_element_located((By.XPATH, "//main/article/section"))
+        WebDriverWait(driver, 15).until(
+            EC.presence_of_element_located((By.XPATH, "/html/body/main/article"))
         )
     except Exception as e:
-        print(f"Timed out waiting for homepage stories: {e}")
+        print(f"Timed out waiting for main article: {e}")
         return []
 
-    # Scroll down to trigger lazy loading
+    # Scroll to trigger lazy loading
     driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-    time.sleep(2)
+    time.sleep(3)
+    driver.execute_script("window.scrollTo(0, 0);")
+    time.sleep(1)
 
-    # Grab all article card anchor tags across all sections
-    # Matches href pattern: /article/...
-    story_elements = driver.find_elements(
-        By.XPATH, "//main/article/section//a[starts-with(@href, '/article/')]"
+    # --- DEBUG: count how many divs are inside main/article ---
+    article_divs = driver.find_elements(By.XPATH, "/html/body/main/article/div")
+    print(f"DEBUG: Found {len(article_divs)} top-level divs inside main/article")
+
+    # Try to find any /article/ links anywhere on the page first
+    all_article_links = driver.find_elements(
+        By.XPATH, "/html/body/main/article/div[16]//a[contains(@href, '/article/')]"
     )
+    print(f"DEBUG: Found {len(all_article_links)} total /article/ links on page")
+
+    """ Now try each div index to find where the story cards live
+    for i in range(1, len(article_divs) + 1):
+        links = driver.find_elements(
+            By.XPATH, f"/html/body/main/article/div[{i}]//a[contains(@href, '/article/')]"
+        )
+        if links:
+            print(f"DEBUG: div[{i}] contains {len(links)} article links — this is likely the right section") """
+    
+    # Now try each div index to find where the story cards live
+    links = driver.find_elements(
+        By.XPATH, f"/html/body/main/article/div[16]//a[contains(@href, '/article/')]"
+    )
+    if links:
+        print(f"DEBUG: div[16] contains {len(links)} article links — this is likely the right section")
 
     stories = []
     seen_urls = set()
 
-    for el in story_elements:
+    for el in all_article_links:
         try:
             href = el.get_attribute("href")
-            # Extract title from the h4 inside the card
             try:
                 title = el.find_element(By.XPATH, ".//h4").text.strip()
             except:
-                title = href  # fallback to URL if title not found
+                title = href
 
             if href and href not in seen_urls and title:
                 stories.append({"title": title, "url": href})
