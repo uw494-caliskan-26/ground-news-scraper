@@ -122,16 +122,15 @@ def fetch_article_data(url):
         for source_element in tqdm(source_elements, desc="Processing sources", unit="source"):
             try:
                 source = {}
-                
+
                 # Extract news title from the h4 element, relative to the article-summary
                 news_title_element = source_element.find_element(By.XPATH, ".//a/h4")
                 source['news_title'] = news_title_element.text
-                
-                
+
                 # Extract news link from the anchor tag, relative to the article-summary
                 news_link_element = source_element.find_element(By.XPATH, "./div/a")
                 source['news_link'] = news_link_element.get_attribute('href')
-                
+
                 # Extract bias from the bias element, relative to the article-summary
                 try:
                     bias_element = source_element.find_element(By.XPATH, ".//a[contains(@id, 'article-source-bias')]/div")
@@ -139,17 +138,17 @@ def fetch_article_data(url):
                 except Exception as e:
                     source['bias'] = "unknown"
                     print(f"  - Error extracting bias: {e}")
-                    
+
                 link = str(source['news_link'])
-                
+
                 downloaded = trafilatura.fetch_url(link)
-                
+
                 fulltext = trafilatura.extract(downloaded)
 
                 source['text'] = fulltext
 
                 article_data['sources'].append(source)
-                
+
             except Exception as e:
                 print(f"  - Error extracting source data: {e}")
                 continue
@@ -160,7 +159,7 @@ def fetch_article_data(url):
         # Generate unique Story ID
         # story_id = f"GN_{datetime.now().strftime('%Y%m%d_%H%M%S')}_{str(uuid.uuid4())[:8]}"
         story_id = f"1"
-        
+
         sid = str(story_id)
         print(f"Generated Story ID: {sid}")
 
@@ -188,16 +187,16 @@ def fetch_article_data(url):
 
         # Save to JSON file in json/ directory
         json_filename = os.path.join('json', f"{sid}.json")
-        
+
         try:
             # Ensure json directory exists
             os.makedirs('json', exist_ok=True)
-            
+
             # Write JSON data with proper formatting
             with open(json_filename, 'w', encoding='utf-8') as file:
                 json.dump(structured_data, file, indent=2, ensure_ascii=False)
                 print(f"Data successfully saved to {json_filename}")
-                
+
         except PermissionError:
             print(f"Permission denied: Cannot write to '{json_filename}'. Please check file permissions.")
         except Exception as e:
@@ -236,67 +235,18 @@ def scrape_all_topics_from_homepage():
                     topic_links.append(href)
         except Exception as e:
             print(f"Error finding topic links: {e}")
-            return
 
-            print(f"\n[{idx + 1}/{len(topic_links)}] {topic_url}")
-            try:
-                driver.get(topic_url)
-                time.sleep(0.5)
-                story_id = f"GN_{datetime.now().strftime('%Y%m%d_%H%M%S')}_{str(uuid.uuid4())[:8]}"
-                sid = str(story_id)
-                article_data = {}
-                try:
-                    article_data['title'] = driver.find_element(By.ID, "titleArticle").text
-                except:
-                    article_data['title'] = "N/A"
+        print(topic_links)
 
+        # try:
+        #     master_filename = os.path.join('json', f"all_topics_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json")
+        #     os.makedirs('json', exist_ok=True)
+        #     with open(master_filename, 'w', encoding='utf-8') as file:
+        #         json.dump(topic_links, file, indent=2, ensure_ascii=False)
+        #     print(f"\nMaster file saved: {master_filename}")
+        # except Exception as e:
+        #     print(f"Error saving master: {e}")
 
-                source_elements = driver.find_elements(By.ID, "article-summary")
-                for source_element in source_elements:
-                    try:
-                        source = {}
-                        try:
-                            source['news_title'] = source_element.find_element(By.XPATH, ".//a/h4").text
-                        except:
-                            source['news_title'] = "N/A"
-                        try:
-                            source['news_link'] = source_element.find_element(By.XPATH, "./div/a").get_attribute('href')
-                        except:
-                            source['news_link'] = "N/A"
-                        try:
-                            if source['news_link'] != "N/A":
-                                downloaded = trafilatura.fetch_url(source['news_link'])
-                                source['text'] = trafilatura.extract(downloaded)
-                            else:
-                                source['text'] = None
-                        except:
-                            source['text'] = None
-                        article_data['sources'].append(source)
-                    except:
-                        continue
-                structured_data = {
-                    'story_id': sid,
-                    'metadata': {'title': article_data.get('title', ''), 'timestamp': datetime.now().isoformat(), 'url': topic_url}
-                }
-                article_links.append(structured_data)
-                json_filename = os.path.join('json', f"{sid}.json")
-                try:
-                    os.makedirs('json', exist_ok=True)
-                    with open(json_filename, 'w', encoding='utf-8') as file:
-                        json.dump(structured_data, file, indent=2, ensure_ascii=False)
-                except:
-                    pass
-            except Exception as e:
-                print(f"Error: {e}")
-                continue
-        try:
-            master_filename = os.path.join('json', f"all_topics_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json")
-            os.makedirs('json', exist_ok=True)
-            with open(master_filename, 'w', encoding='utf-8') as file:
-                json.dump(topic_links, file, indent=2, ensure_ascii=False)
-            print(f"\nMaster file saved: {master_filename}")
-        except Exception as e:
-            print(f"Error saving master: {e}")
     except Exception as e:
         print(f"Error: {e}")
     finally:

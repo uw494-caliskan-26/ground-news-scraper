@@ -15,17 +15,17 @@ for filename in os.listdir(folder_path):
             # Load the JSON data
             try:
                 story = json.load(file)
-                
+
                 # Extract metadata
                 story_id = story.get("story_id")
                 timestamp = story.get("metadata", {}).get("timestamp")
                 title = story.get("metadata", {}).get("title")
-                
+
                 # Extract source details
                 for source in story.get("sources", []):
                     # Handle null text and replace '\n' with a space
                     source_text = source.get("text", "").replace("\n", " ") if source.get("text") else ""
-                    
+
                     # Append each source's information as a new row
                     data.append({
                         'story_id': story_id,
