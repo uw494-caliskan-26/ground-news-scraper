@@ -220,9 +220,9 @@ def scrape_all_topics_from_homepage():
         topic_links = []
         try:
             WebDriverWait(driver, 10).until(EC.presence_of_all_elements_located(
-                (By.XPATH, "//html/body/main/article/div[2]/div[5]/div[1]/div[3]/div/a")
+                (By.XPATH, "/html/body/main/article/div[16]")
             ))
-            topic_elements = driver.find_elements(By.XPATH, "//html/body/main/article/div[2]/div[5]/div[1]/div[3]/div/a")
+            topic_elements = driver.find_elements(By.XPATH, "/html/body/main/article/div[16]/div[2]")
             print(f"Found {len(topic_elements)} topics")
             for element in topic_elements:
                 href = element.get_attribute('href')
@@ -231,7 +231,8 @@ def scrape_all_topics_from_homepage():
         except Exception as e:
             print(f"Error finding topic links: {e}")
             return
-        all_data = []
+
+        article_links = []
         for idx, topic_url in enumerate(tqdm(topic_links, desc="Processing topics")):
             print(f"\n[{idx + 1}/{len(topic_links)}] {topic_url}")
             try:
@@ -245,7 +246,7 @@ def scrape_all_topics_from_homepage():
                 except:
                     article_data['title'] = "N/A"
                 try:
-                    article_data['total_source'] = driver.find_element(By.XPATH, "/html/body/main/div/article/div/div/div[4]/div[1]/div/div/span[2]").text
+                    article_data['total_source'] = driver.find_element(By.XPATH, "/html/body/main/article/div[16]/div[2]/div/a").text
                 except:
                     article_data['total_source'] = "N/A"
                 try:
@@ -260,33 +261,7 @@ def scrape_all_topics_from_homepage():
                     article_data['center'] = driver.find_element(By.XPATH, "//*[@id='main']/div/article/div/div/div[4]/div[1]/div/span[6]").text
                 except:
                     article_data['center'] = "N/A"
-                article_data['left_points'] = []
-                article_data['center_points'] = []
-                article_data['right_points'] = []
-                try:
-                    left_summary_button = driver.find_element(By.ID, "left-summary-button")
-                    if left_summary_button.is_enabled() and left_summary_button.is_displayed():
-                        ActionChains(driver).move_to_element(left_summary_button).click().perform()
-                        time.sleep(1)
-                        article_data['left_points'] = [point.text for point in driver.find_elements(By.XPATH, "/html/body/main/div/article/div/div/div[1]/div[2]/div[3]/div/div/div[2]/div[1]/ul/li")]
-                except:
-                    pass
-                try:
-                    center_summary_button = driver.find_element(By.ID, "center-summary-button")
-                    if center_summary_button.is_enabled() and center_summary_button.is_displayed():
-                        ActionChains(driver).move_to_element(center_summary_button).click().perform()
-                        time.sleep(1)
-                        article_data['center_points'] = [point.text for point in driver.find_elements(By.XPATH, "/html/body/main/div/article/div/div/div[1]/div[2]/div[3]/div/div/div[2]/div[1]/ul/li")]
-                except:
-                    pass
-                try:
-                    right_summary_button = driver.find_element(By.ID, "right-summary-button")
-                    if right_summary_button.is_enabled() and right_summary_button.is_displayed():
-                        ActionChains(driver).move_to_element(right_summary_button).click().perform()
-                        time.sleep(1)
-                        article_data['right_points'] = [point.text for point in driver.find_elements(By.XPATH, "/html/body/main/div/article/div/div/div[1]/div[2]/div[3]/div/div/div[2]/div[1]/ul/li")]
-                except:
-                    pass
+
                 while True:
                     try:
                         more_stories_button = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID, "more-stories")))
@@ -308,10 +283,6 @@ def scrape_all_topics_from_homepage():
                         except:
                             source['news_link'] = "N/A"
                         try:
-                            source['bias'] = source_element.find_element(By.XPATH, ".//a[contains(@id, 'article-source-bias')]/div").text
-                        except:
-                            source['bias'] = "unknown"
-                        try:
                             if source['news_link'] != "N/A":
                                 downloaded = trafilatura.fetch_url(source['news_link'])
                                 source['text'] = trafilatura.extract(downloaded)
@@ -324,12 +295,9 @@ def scrape_all_topics_from_homepage():
                         continue
                 structured_data = {
                     'story_id': sid,
-                    'metadata': {'title': article_data.get('title', ''), 'timestamp': datetime.now().isoformat(), 'url': topic_url},
-                    'bias_distribution': {'total_sources': article_data.get('total_source', ''), 'leaning_left': article_data.get('leaning_left', ''), 'center': article_data.get('center', ''), 'leaning_right': article_data.get('leaning_right', '')},
-                    'perspective_summaries': {'left': article_data.get('left_points', []), 'center': article_data.get('center_points', []), 'right': article_data.get('right_points', [])},
-                    'sources': article_data.get('sources', [])
+                    'metadata': {'title': article_data.get('title', ''), 'timestamp': datetime.now().isoformat(), 'url': topic_url}
                 }
-                all_data.append(structured_data)
+                article_links.append(structured_data)
                 json_filename = os.path.join('json', f"{sid}.json")
                 try:
                     os.makedirs('json', exist_ok=True)
@@ -344,7 +312,7 @@ def scrape_all_topics_from_homepage():
             master_filename = os.path.join('json', f"all_topics_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json")
             os.makedirs('json', exist_ok=True)
             with open(master_filename, 'w', encoding='utf-8') as file:
-                json.dump(all_data, file, indent=2, ensure_ascii=False)
+                json.dump(article_links, file, indent=2, ensure_ascii=False)
             print(f"\nMaster file saved: {master_filename}")
         except Exception as e:
             print(f"Error saving master: {e}")
