@@ -213,7 +213,10 @@ def scrape_all_topics_from_homepage():
     options.add_argument("--start-maximized")
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
     try:
-        driver.get("https://groundnews.org")
+        driver.get("https://ground.news/")
+        time.sleep(1)
+        homepage_button = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[7]/div/div/span/button")))
+        ActionChains(driver).move_to_element(homepage_button).click().perform()
         time.sleep(1)
         print("Loaded Ground News homepage")
         topic_links = []
@@ -248,7 +251,7 @@ def scrape_all_topics_from_homepage():
         #     print(f"Error saving master: {e}")
 
     except Exception as e:
-        print(f"Error: {e}")
+        print(f"Error: {e}, failed here")
     finally:
         driver.quit()
         print("Browser closed.")
