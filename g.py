@@ -221,13 +221,16 @@ def scrape_all_topics_from_homepage():
         print("Loaded Ground News homepage")
         topic_links = []
         try:
+            print('in here?')
             while True:
-                    try:
-                        more_stories_button = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID, "more-stories")))
-                        ActionChains(driver).move_to_element(more_stories_button).click().perform()
-                        time.sleep(1)
-                    except:
-                        break
+                try:
+                    more_stories_button = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID, "more_stories")))
+                    ActionChains(driver).move_to_element(more_stories_button).click().perform()
+                    time.sleep(1)
+                    print('button pushed')
+                except Exception as e:
+                    print('didnt enter loop?')
+                    break
             WebDriverWait(driver, 10).until(EC.presence_of_all_elements_located(
                 (By.XPATH, "/html/body/main/article/div[16]")
             ))
