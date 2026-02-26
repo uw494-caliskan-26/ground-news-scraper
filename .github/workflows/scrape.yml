@@ -2,8 +2,11 @@ name: Daily Scrape
 
 on:
   schedule:
-    - cron: '30 12 * * *'  # runs every day at 12:30 UTC
+    - cron: '35 12 * * *' 
   workflow_dispatch:       # allows manual trigger from GitHub UI
+
+permissions:
+  contents: write
 
 jobs:
   scrape:
@@ -12,6 +15,8 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
