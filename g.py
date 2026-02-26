@@ -1,3 +1,4 @@
+import csv
 import time
 import json
 import sys
@@ -14,7 +15,72 @@ from selenium.webdriver.support import expected_conditions as EC
 from tqdm import tqdm
 import trafilatura
 
+csv.field_size_limit(sys.maxsize)
+
 BASE_URL = "https://ground.news"
+RESULTS_FILE = os.path.join('json', 'results.csv')
+
+CSV_FIELDS = [
+    'story_id', 'title', 'url', 'timestamp',
+    'total_sources', 'leaning_left', 'center', 'leaning_right',
+    'left_points', 'center_points', 'right_points',
+    'sources',
+]
+
+def _flatten(data):
+    return {
+        'story_id': data['story_id'],
+        'title': data['metadata']['title'],
+        'url': data['metadata']['url'],
+        'timestamp': data['metadata']['timestamp'],
+        'total_sources': data['bias_distribution']['total_sources'],
+        'leaning_left': data['bias_distribution']['leaning_left'],
+        'center': data['bias_distribution']['center'],
+        'leaning_right': data['bias_distribution']['leaning_right'],
+        'left_points': ' | '.join(data['perspective_summaries']['left']),
+        'center_points': ' | '.join(data['perspective_summaries']['center']),
+        'right_points': ' | '.join(data['perspective_summaries']['right']),
+        'sources': json.dumps(data['sources'], ensure_ascii=False),
+    }
+
+def load_results():
+    """Load previously saved results. Returns (results list, set of scraped URLs)."""
+    if not os.path.exists(RESULTS_FILE):
+        return [], set()
+    results = []
+    seen_urls = set()
+    with open(RESULTS_FILE, 'r', encoding='utf-8', newline='') as f:
+        for row in csv.DictReader(f):
+            seen_urls.add(row['url'])
+            results.append({
+                'story_id': row['story_id'],
+                'metadata': {'title': row['title'], 'url': row['url'], 'timestamp': row['timestamp']},
+                'bias_distribution': {
+                    'total_sources': row['total_sources'],
+                    'leaning_left': row['leaning_left'],
+                    'center': row['center'],
+                    'leaning_right': row['leaning_right'],
+                },
+                'perspective_summaries': {
+                    'left': [p for p in row['left_points'].split(' | ') if p],
+                    'center': [p for p in row['center_points'].split(' | ') if p],
+                    'right': [p for p in row['right_points'].split(' | ') if p],
+                },
+                'sources': json.loads(row['sources']) if row['sources'] else [],
+            })
+    print(f"Resuming: {len(results)} stories already scraped.")
+    return results, seen_urls
+
+def save_results(results):
+    if not results:
+        return
+    os.makedirs('json', exist_ok=True)
+    with open(RESULTS_FILE, 'w', encoding='utf-8', newline='') as f:
+        writer = csv.DictWriter(f, fieldnames=CSV_FIELDS)
+        writer.writeheader()
+        for data in results:
+            writer.writerow(_flatten(data))
+    print(f"[Saved {len(results)} total results → {RESULTS_FILE}]")
 
 def init_driver():
     options = webdriver.ChromeOptions()
@@ -41,12 +107,22 @@ def collect_latest_stories(driver):
     driver.execute_script("window.scrollTo(0, 0);")
     time.sleep(1)
     
-    # Get latest topics from div[16]
+    # Click "Load more stories" until it disappears, then collect all links
+    while True:
+        try:
+            more_btn = WebDriverWait(driver, 5).until(
+                EC.element_to_be_clickable((By.ID, "more_stories"))
+            )
+            ActionChains(driver).move_to_element(more_btn).click().perform()
+            time.sleep(2)
+        except Exception:
+            break
+
+    # Get only cards inside the "Latest Stories" section
     links = driver.find_elements(
-        By.XPATH, f"/html/body/main/article/div[16]//a[contains(@href, '/article/')]"
+        By.XPATH, "//h3[text()='Latest Stories']/following-sibling::div//a[@data-dd-action-name='article-card-click']"
     )
-    if links:
-        print(f"DEBUG: div[16] contains {len(links)} article links")
+    print(f"DEBUG: found {len(links)} article links")
 
     stories = []
     seen_urls = set()
@@ -56,20 +132,20 @@ def collect_latest_stories(driver):
             href = el.get_attribute("href")
             try:
                 title = el.find_element(By.XPATH, ".//h4").text.strip()
-            except:
+            except Exception:
                 title = href
-
             if href and href not in seen_urls and title:
                 stories.append({"title": title, "url": href})
                 seen_urls.add(href)
-        except:
+        except Exception:
             continue
 
     print(f"\nFound {len(stories)} stories on homepage:")
     
     for i, story in enumerate(stories):
-        print(f"  [{i + 1}] {story['title']}")
-        print(f"       {story['url']}")
+        print(f" [{i + 1}] {story['title']}")
+        print(f" {story['url']}")
+
     return stories
 
 
@@ -81,12 +157,13 @@ def fetch_article_data(driver, url):
 
         article_data = {}
 
-        # Generate story ID at the start
-        story_id = f"GN_{datetime.now().strftime('%Y%m%d_%H%M%S')}_{str(uuid.uuid4())[:8]}"
-
         # Extract Title
         article_data['title'] = driver.find_element(By.ID, "titleArticle").text
         print(f"Title: {article_data['title']}")
+
+        # Generate story ID with title, timestamp, and random UUID for uniqueness
+        safe_title = "".join(c if c.isalnum() or c in " -_" else "_" for c in article_data['title'])[:80].strip()
+        story_id = f"{safe_title}_{datetime.now().strftime('%Y%m%d%H%M%S')}_{str(uuid.uuid4())[:8]}"
 
         # Extract bias distribution
         article_data['total_source'] = driver.find_element(By.XPATH, "/html/body/main/div/article/div/div/div[4]/div[1]/div/div/span[2]").text
@@ -104,11 +181,11 @@ def fetch_article_data(driver, url):
                 button = driver.find_element(By.ID, f"{side}-summary-button")
                 if button.is_enabled() and button.is_displayed():
                     ActionChains(driver).move_to_element(button).click().perform()
-                    time.sleep(2)
-                    points = driver.find_elements(
-                        By.XPATH,
-                        "/html/body/main/div/article/div/div/div[1]/div[2]/div[3]/div/div/div[2]/div[1]/ul/li"
+                    points_xpath = "/html/body/main/div/article/div/div/div[1]/div[2]/div[3]/div/div/div[2]/div[1]/ul/li"
+                    WebDriverWait(driver, 5).until(
+                        EC.presence_of_element_located((By.XPATH, points_xpath))
                     )
+                    points = driver.find_elements(By.XPATH, points_xpath)
                     article_data[f'{side}_points'] = [p.text for p in points]
                     print(f"{side.capitalize()} points extracted: {len(article_data[f'{side}_points'])}")
             except Exception as e:
@@ -127,13 +204,13 @@ def fetch_article_data(driver, url):
                     stories_loaded += 1
                     pbar.update(1)
                     pbar.set_postfix({"Batches loaded": stories_loaded})
-                except:
+                except Exception:
                     pbar.set_description("Finished loading stories")
                     break
 
         # Extract sources
         article_data['sources'] = []
-        source_elements = driver.find_elements(By.ID, "article-summary")
+        source_elements = driver.find_elements(By.XPATH, "//*[@id='article-summary']")
 
         for source_element in tqdm(source_elements, desc="Processing sources", unit="source"):
             try:
@@ -146,7 +223,7 @@ def fetch_article_data(driver, url):
                 try:
                     bias_el = source_element.find_element(By.XPATH, ".//a[contains(@id, 'article-source-bias')]/div")
                     source['bias'] = bias_el.text
-                except:
+                except Exception:
                     source['bias'] = "unknown"
 
                 downloaded = trafilatura.fetch_url(str(source['news_link']))
@@ -204,6 +281,9 @@ def fetch_article_data(driver, url):
 def run_pipeline():
     driver = init_driver()
 
+    # Load any previously saved results so we can resume
+    results, seen_urls = load_results()
+
     try:
         # Step 1: collect all story URLs from homepage
         stories = collect_latest_stories(driver)
@@ -212,20 +292,34 @@ def run_pipeline():
             print("No stories found. Exiting.")
             return
 
-        print(f"\nStarting pipeline for {len(stories)} stories...\n")
+        # Filter out already-scraped stories
+        pending = [s for s in stories if s['url'] not in seen_urls]
+        skipped = len(stories) - len(pending)
+        if skipped:
+            print(f"Skipping {skipped} already-scraped stories. {len(pending)} remaining.")
 
-        # Step 2: scrape each story
-        results = []
-        for story in tqdm(stories, desc="Overall progress", unit="story"):
+        if not pending:
+            print("All stories already scraped.")
+            return
+
+        print(f"\nStarting pipeline for {len(pending)} stories...\n")
+
+        # Step 2: scrape each story, saving after each one
+        for story in tqdm(pending, desc="Overall progress", unit="story"):
             result = fetch_article_data(driver, story['url'])
             if result:
                 results.append(result)
+                save_results(results)
             time.sleep(1)  # small buffer between stories
 
-        print(f"\nPipeline complete. Successfully scraped {len(results)}/{len(stories)} stories.")
+        print(f"\nPipeline complete. Successfully scraped {len(results)} total stories.")
 
+    except KeyboardInterrupt:
+        print(f"\nInterrupted. Saving {len(results)} collected results...")
+        save_results(results)
     except Exception as e:
         print(f"Pipeline error: {e}")
+        save_results(results)
     finally:
         driver.quit()
         print("Browser closed.")
