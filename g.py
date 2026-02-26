@@ -40,36 +40,18 @@ def collect_latest_stories(driver):
     time.sleep(3)
     driver.execute_script("window.scrollTo(0, 0);")
     time.sleep(1)
-
-    # --- DEBUG: count how many divs are inside main/article ---
-    article_divs = driver.find_elements(By.XPATH, "/html/body/main/article/div")
-    print(f"DEBUG: Found {len(article_divs)} top-level divs inside main/article")
-
-    # Try to find any /article/ links anywhere on the page first
-    all_article_links = driver.find_elements(
-        By.XPATH, "/html/body/main/article/div[16]//a[contains(@href, '/article/')]"
-    )
-    print(f"DEBUG: Found {len(all_article_links)} total /article/ links on page")
-
-    """ Now try each div index to find where the story cards live
-    for i in range(1, len(article_divs) + 1):
-        links = driver.find_elements(
-            By.XPATH, f"/html/body/main/article/div[{i}]//a[contains(@href, '/article/')]"
-        )
-        if links:
-            print(f"DEBUG: div[{i}] contains {len(links)} article links — this is likely the right section") """
     
-    # Now try each div index to find where the story cards live
+    # Get latest topics from div[16]
     links = driver.find_elements(
         By.XPATH, f"/html/body/main/article/div[16]//a[contains(@href, '/article/')]"
     )
     if links:
-        print(f"DEBUG: div[16] contains {len(links)} article links — this is likely the right section")
+        print(f"DEBUG: div[16] contains {len(links)} article links")
 
     stories = []
     seen_urls = set()
 
-    for el in all_article_links:
+    for el in links:
         try:
             href = el.get_attribute("href")
             try:
@@ -84,10 +66,10 @@ def collect_latest_stories(driver):
             continue
 
     print(f"\nFound {len(stories)} stories on homepage:")
+    
     for i, story in enumerate(stories):
         print(f"  [{i + 1}] {story['title']}")
         print(f"       {story['url']}")
-
     return stories
 
 
@@ -135,8 +117,7 @@ def fetch_article_data(driver, url):
         # Load all stories
         stories_loaded = 0
         with tqdm(desc="Loading more stories", unit="batch") as pbar:
-            # for test run for only 5 batches
-            while stories_loaded < 5:
+            while True:
                 try:
                     more_btn = WebDriverWait(driver, 5).until(
                         EC.element_to_be_clickable((By.ID, "more-stories"))
