@@ -106,6 +106,16 @@ def collect_latest_stories(driver):
         print(f"Timed out waiting for main article: {e}")
         return []
 
+    # Dismiss onboarding/subscribe modal if present
+    try:
+        close_btn = WebDriverWait(driver, 5).until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR, "[data-testid='onboarding-close-button']"))
+        )
+        close_btn.click()
+        print("Dismissed onboarding modal.")
+    except Exception:
+        pass  # modal didn't appear, continue
+
     # Scroll to trigger lazy loading
     driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
     time.sleep(3)
@@ -207,6 +217,8 @@ def fetch_article_data(driver, url):
                         EC.element_to_be_clickable((By.ID, "more-stories"))
                     )
                     ActionChains(driver).move_to_element(more_btn).click().perform()
+                    time.sleep(1)
+                    driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
                     time.sleep(2)
                     stories_loaded += 1
                     pbar.update(1)
