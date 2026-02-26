@@ -112,20 +112,22 @@ def collect_latest_stories(driver):
     driver.execute_script("window.scrollTo(0, 0);")
     time.sleep(1)
     
-    # Click "Load more stories" until it disappears, then collect all links
+    # Click "Load more stories" until it disappears, scrolling after each click to trigger lazy loading
     while True:
         try:
             more_btn = WebDriverWait(driver, 5).until(
                 EC.element_to_be_clickable((By.ID, "more_stories"))
             )
             ActionChains(driver).move_to_element(more_btn).click().perform()
+            time.sleep(1)
+            driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
             time.sleep(2)
         except Exception:
             break
 
-    # Get only cards inside the "Latest Stories" section
+    # Get all article cards across all homepage sections
     links = driver.find_elements(
-        By.XPATH, "//h3[text()='Latest Stories']/following-sibling::div//a[@data-dd-action-name='article-card-click']"
+        By.XPATH, "//a[@data-dd-action-name='article-card-click']"
     )
     print(f"DEBUG: found {len(links)} article links")
 
