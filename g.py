@@ -140,7 +140,7 @@ def collect_latest_stories(driver):
     time.sleep(3)
     driver.execute_script("window.scrollTo(0, 0);")
     time.sleep(1)
-    
+
     # Click "Load more stories" until it disappears, scrolling after each click to trigger lazy loading
     while True:
         try:
@@ -177,7 +177,7 @@ def collect_latest_stories(driver):
             continue
 
     print(f"\nFound {len(stories)} stories on homepage:")
-    
+
     for i, story in enumerate(stories):
         print(f" [{i + 1}] {story['title']}")
         print(f" {story['url']}")

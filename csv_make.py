@@ -105,9 +105,9 @@ for filename in os.listdir(folder_path):
                     })
 
             except json.JSONDecodeError:
-                print(f"⚠️ JSON decode error in file: {filename}")
+                print(f"JSON decode error in file: {filename}")
             except Exception as e:
-                print(f"⚠️ Error processing file {filename}: {e}")
+                print(f"Error processing file {filename}: {e}")
 
 # Convert to DataFrames
 story_df = pd.DataFrame(story_data)
@@ -126,4 +126,4 @@ source_df.to_csv(os.path.join(output_dir, 'sources.csv'), index=False, encoding=
 perspective_df.to_csv(os.path.join(output_dir, 'perspectives.csv'), index=False, encoding='utf-8')
 known_bias_df.to_csv(os.path.join(output_dir, 'known_bias.csv'), index=False, encoding='utf-8')
 
-print("✅ CSV files generated successfully in 'dataset/'")
+print("CSV files generated successfully in 'dataset/'")
