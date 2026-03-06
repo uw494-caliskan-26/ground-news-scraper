@@ -28,46 +28,65 @@ CSV_FIELDS = [
 ]
 
 def _flatten(data):
+    metadata = data.get('metadata', {})
+    bias = data.get('bias_distribution', {})
+    summaries = data.get('perspective_summaries', {})
+
     return {
-        'story_id': data['story_id'],
-        'title': data['metadata']['title'],
-        'url': data['metadata']['url'],
-        'timestamp': data['metadata']['timestamp'],
-        'total_sources': data['bias_distribution']['total_sources'],
-        'leaning_left': data['bias_distribution']['leaning_left'],
-        'center': data['bias_distribution']['center'],
-        'leaning_right': data['bias_distribution']['leaning_right'],
-        'left_points': ' | '.join(data['perspective_summaries']['left']),
-        'center_points': ' | '.join(data['perspective_summaries']['center']),
-        'right_points': ' | '.join(data['perspective_summaries']['right']),
-        'sources': json.dumps(data['sources'], ensure_ascii=False),
+        'story_id': data.get('story_id', ''),
+        'title': metadata.get('title', ''),
+        'url': metadata.get('url', ''),
+        'timestamp': metadata.get('timestamp', ''),
+        'total_sources': bias.get('total_sources', ''),
+        'leaning_left': bias.get('leaning_left', ''),
+        'center': bias.get('center', ''),
+        'leaning_right': bias.get('leaning_right', ''),
+        'left_points': ' | '.join(summaries.get('left', [])),
+        'center_points': ' | '.join(summaries.get('center', [])),
+        'right_points': ' | '.join(summaries.get('right', [])),
+        'sources': json.dumps(data.get('sources', []), ensure_ascii=False),
     }
+
+def split_points(value):
+    if not value:
+        return []
+    return [p for p in value.split(' | ') if p]
 
 def load_results():
     """Load previously saved results. Returns (results list, set of scraped URLs)."""
     if not os.path.exists(RESULTS_FILE):
         return [], set()
+
     results = []
     seen_urls = set()
+
     with open(RESULTS_FILE, 'r', encoding='utf-8', newline='') as f:
         for row in csv.DictReader(f):
-            seen_urls.add(row['url'])
+            url = row.get('url')
+            if url:
+                seen_urls.add(url)
+
             results.append({
-                'story_id': row['story_id'],
-                'metadata': {'title': row['title'], 'url': row['url'], 'timestamp': row['timestamp']},
+                'story_id': row.get('story_id', ''),
+                'metadata': {
+                    'title': row.get('title', ''),
+                    'url': url or '',
+                    'timestamp': row.get('timestamp', '')
+                },
                 'bias_distribution': {
-                    'total_sources': row['total_sources'],
-                    'leaning_left': row['leaning_left'],
-                    'center': row['center'],
-                    'leaning_right': row['leaning_right'],
+                    'total_sources': row.get('total_sources', ''),
+                    'leaning_left': row.get('leaning_left', ''),
+                    'center': row.get('center', ''),
+                    'leaning_right': row.get('leaning_right', ''),
                 },
                 'perspective_summaries': {
-                    'left': [p for p in row['left_points'].split(' | ') if p],
-                    'center': [p for p in row['center_points'].split(' | ') if p],
-                    'right': [p for p in row['right_points'].split(' | ') if p],
+                    'left': split_points(row.get('left_points')),
+                    'center': split_points(row.get('center_points')),
+                    'right': split_points(row.get('right_points')),
                 },
-                'sources': json.loads(row['sources']) if row['sources'] else [],
+                'sources': json.loads(row['sources']) if row.get('sources') else [],
             })
+
     print(f"Resuming: {len(results)} stories already scraped.")
     return results, seen_urls
 
