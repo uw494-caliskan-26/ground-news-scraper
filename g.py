@@ -334,13 +334,15 @@ def run_pipeline():
         pending = [s for s in stories if s['url'] not in seen_urls]
         skipped = len(stories) - len(pending)
         if skipped:
-            print(f"Skipping {skipped} already-scraped stories. {len(pending)} remaining.")
+            print(f"Skipping {skipped} already-scraped stories. {len(pending)} remaining.", flush=True)
 
         if not pending:
-            print("All stories already scraped.")
+            print("All stories already scraped.", flush=True)
             return
 
-        print(f"\nStarting pipeline for {len(pending)} stories...\n")
+        # Respect Ground News daily limit
+        pending = pending[:5]
+        print(f"Daily cap enabled: scraping {len(pending)} story/stories max.", flush=True)
 
         # Step 2: scrape each story, saving after each one
         for story in tqdm(pending, desc="Overall progress", unit="story"):
