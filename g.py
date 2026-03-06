@@ -48,7 +48,9 @@ def _flatten(data):
     }
 
 def split_points(value):
-    if not value:
+    if not value or value is None:
+        return []
+    if not isinstance(value, str):
         return []
     return [p for p in value.split(' | ') if p]
 
