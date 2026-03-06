@@ -1,0 +1,87 @@
+{
+  "story_id": "FBI Investigating _Suspicious_ Cyber Activities on Critical Surveillance Network_20260305233308_c32e08f9",
+  "metadata": {
+    "title": "FBI Investigating ‘Suspicious’ Cyber Activities on Critical Surveillance Network",
+    "timestamp": "2026-03-05T23:33:17.903128",
+    "url": "https://ground.news/article/fbi-investigating-suspicious-cyber-activities-on-critical-surveillance-network"
+  },
+  "bias_distribution": {
+    "total_sources": "47",
+    "leaning_left": "9",
+    "center": "29",
+    "leaning_right": "3"
+  },
+  "perspective_summaries": {
+    "left": [
+      "The FBI detected suspicious cyber activities on an internal network used to manage wiretaps and intelligence surveillance warrants and is investigating the incident's seriousness.",
+      "The affected network is unclassified but contains sensitive law enforcement information, including surveillance returns and personally identifiable information related to FBI investigations.",
+      "Sophisticated techniques exploiting a commercial internet service provider's infrastructure were used to bypass network security controls during the cyber incident.",
+      "Officials note challenges in FBI cybersecurity capabilities amid leadership changes, complicating efforts to prevent foreign cyberattacks."
+    ],
+    "center": [
+      "The FBI identified and addressed \"suspicious activities\" on its networks related to wiretaps and intelligence surveillance.",
+      "The FBI did not provide details on the nature of the activities or when they were identified.",
+      "U.S. government networks are routinely targeted by hackers, with recent incidents at the Congressional Budget Office and federal courts."
+    ],
+    "right": [
+      "The FBI is investigating suspicious activities on an internal system containing sensitive surveillance and investigation information, discovered on February 17, 2026.",
+      "The affected system is unclassified but holds law enforcement sensitive data, including pen register and trap and trace surveillance returns and personally identifiable information about FBI investigation subjects."
+    ]
+  },
+  "sources": [
+    {
+      "news_title": "FBI is probing ‘suspicious’ breach into bureau networks",
+      "news_link": "https://www.nextgov.com/cybersecurity/2026/03/fbi-probing-suspicious-breach-bureau-networks/411929/",
+      "bias": "Center",
+      "text": null
+    },
+    {
+      "news_title": "FBI investigating hack on its wiretap and surveillance systems: report",
+      "news_link": "https://techcrunch.com/2026/03/05/fbi-investigating-hack-on-its-wiretap-and-surveillance-systems-report/",
+      "bias": "Center",
+      "text": null
+    },
+    {
+      "news_title": "FBI Investigating 'suspicious' Cyber Activity on Internal System",
+      "news_link": "https://www.latestly.com/agency-news/fbi-investigating-suspicious-cyber-activity-on-internal-system-7343358.html",
+      "bias": "Right",
+      "text": null
+    },
+    {
+      "news_title": "FBI targeted with ‘suspicious’ activity on its networks",
+      "news_link": "https://cyberscoop.com/fbi-targeted-with-suspicious-activity-on-its-networks/",
+      "bias": "Center",
+      "text": null
+    },
+    {
+      "news_title": "FBI investigating 'suspicious' cyber activity on system holding sensitive surveillance information",
+      "news_link": "https://apnews.com/article/fbi-cyber-surveillance-584d23d387bdc0552a7129d6068ee69f",
+      "bias": "Lean Left",
+      "text": null
+    },
+    {
+      "news_title": "FBI \"identified and addressed\" suspicious cyber activities on its networks, agency spokesperson said",
+      "news_link": "https://www.reuters.com/technology/fbi-identified-addressed-suspicious-cyber-activities-its-networks-agency-2026-03-05/",
+      "bias": "Center",
+      "text": null
+    },
+    {
+      "news_title": "FBI 'identified and addressed' suspicious cyber activities on its networks, agency spokesperson said",
+      "news_link": "https://www.channelnewsasia.com/business/fbi-identified-and-addressed-suspicious-cyber-activities-its-networks-agency-spokesperson-said-5974836",
+      "bias": "Center",
+      "text": null
+    },
+    {
+      "news_title": "FBI investigating ‘suspicious’ cyber activities on critical surveillance network",
+      "news_link": "https://www.cnn.com/2026/03/05/politics/fbi-investigating-cyber-breach-critical-surveillance-network",
+      "bias": "Lean Left",
+      "text": null
+    },
+    {
+      "news_title": "FBI confirms its networks were targeted by \"suspicious\" cyber activities",
+      "news_link": "https://www.cbsnews.com/news/fbi-confirms-its-networks-were-targeted-by-suspicious-cyber-activities/",
+      "bias": "Center",
+      "text": null
+    }
+  ]
+}

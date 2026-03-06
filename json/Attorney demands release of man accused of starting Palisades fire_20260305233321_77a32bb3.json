@@ -1,0 +1,73 @@
+{
+  "story_id": "Attorney demands release of man accused of starting Palisades fire_20260305233321_77a32bb3",
+  "metadata": {
+    "title": "Attorney demands release of man accused of starting Palisades fire",
+    "timestamp": "2026-03-05T23:33:27.338450",
+    "url": "https://ground.news/article/attorney-demands-release-of-man-accused-of-starting-palisades-fire_6afe80"
+  },
+  "bias_distribution": {
+    "total_sources": "22",
+    "leaning_left": "4",
+    "center": "11",
+    "leaning_right": "4"
+  },
+  "perspective_summaries": {
+    "left": [
+      "Jonathan Rinderknecht was charged with starting the Palisades Fire in California, which killed 12 people, but he has pleaded not guilty and his lawyers argue he is a scapegoat for failures in handling the fire.",
+      "Defense attorneys claim new evidence shows the fire was still smoldering after January 1, indicating it was not fully extinguished, and plan to demand Rinderknecht's release from jail.",
+      "Firefighters gave conflicting testimonies about whether hot spots were completely put out, leading Fire Department Chief Jaime Moore to commission an independent report on the fire's handling.",
+      "Attorney Steve Haney argues that Rinderknecht's detention is unfair, calls the case a failure of government agencies rather than one individual, and demands his immediate release."
+    ],
+    "center": [
+      "On March 5, defense attorney Haney demanded the immediate release of Rinderknecht after a firefighter's deposition said hot spots remained on Jan. 2.",
+      "Haney says deposition and civil testimony contradict the government's 'holdover fire' narrative and prosecutors' claim of a Jan. 2, 2025 underground ignition, with some hotspots still smoldering then.",
+      "In a sworn deposition, LAFD firefighter Scott Pike said he noticed about five smoking areas and kicked a smoldering spot to expose `red-hot like coals`.",
+      "Two judges previously denied bond, citing concerns about his mental health, family, and a firearm, while Haney questions ongoing detention based on newly disclosed evidence not available at indictment.",
+      "The Palisades fire, which began Jan. 7, 2025, killed 12 people and destroyed more than 7,000 structures, and Jaime Moore, Fire Department Chief, has commissioned an independent report amid homeowners' civil lawsuit."
+    ],
+    "right": [
+      "Jonathan Rinderknecht has been in federal custody since October, charged with starting the Lachman fire that preceded the deadly Palisades fire in January 2025; he pleaded not guilty and faces up to 45 years if convicted.",
+      "Firefighter Scott Pike testified that on January 2, 2025, he found several smoldering areas at the fire scene, indicating the fire was not fully extinguished, contradicting official claims.",
+      "Attorney Steve Haney argues that new evidence shows city and state agencies failed to extinguish the fire properly and accuse Rinderknecht as a scapegoat, calling for his immediate release.",
+      "Two judges denied Rinderknecht's bond requests citing concerns about his mental health and behavior, although his family testified in support of his innocence."
+    ]
+  },
+  "sources": [
+    {
+      "news_title": "Defense Attorneys Say New Evidence Clears Suspect in Los Angeles' Deadly Palisades Fire",
+      "news_link": "https://www.latestly.com/agency-news/defense-attorneys-say-new-evidence-clears-suspect-in-los-angeles-deadly-palisades-fire-7343444.html",
+      "bias": "Right",
+      "text": null
+    },
+    {
+      "news_title": "Attorneys for suspect in Los Angeles' Palisades Fire seek his release based on new evidence",
+      "news_link": "https://apnews.com/article/palisades-fire-los-angeles-investigation-c415a561dfb18ad9a1c9948856607b02",
+      "bias": "Lean Left",
+      "text": null
+    },
+    {
+      "news_title": "Man accused of starting Palisades fire should be released after Lachman fire revelations, attorney says",
+      "news_link": "https://www.sbsun.com/2026/03/05/attorney-demands-release-of-man-accused-of-starting-palisades-fire/",
+      "bias": "Center",
+      "text": null
+    },
+    {
+      "news_title": "Attorney demands release of man accused of starting Palisades fire",
+      "news_link": "https://www.sgvtribune.com/2026/03/05/attorney-demands-release-of-man-accused-of-starting-palisades-fire/",
+      "bias": "Center",
+      "text": null
+    },
+    {
+      "news_title": "Jonathan Rinderknecht: Defense attorneys seek dismissal of charges in deadly Palisades Fire case",
+      "news_link": "https://www.foxla.com/news/jonathan-rinderknecht-defense-attorneys-seek-dismissal-charges-deadly-palisades-fire-case",
+      "bias": "Center",
+      "text": null
+    },
+    {
+      "news_title": "Defense attorneys for Palisades Fire suspect seek release, cite new evidence of LAFD failures",
+      "news_link": "https://www.smdp.com/defense-attorneys-for-palisades-fire-suspect-seek-release-cite-new-evidence-of-lafd-failures/",
+      "bias": "unknown",
+      "text": null
+    }
+  ]
+}

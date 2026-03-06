@@ -1,0 +1,68 @@
+{
+  "story_id": "Bernard LaFayette_ Selma voting rights organizer_ has died_20260305233408_d9af8a6f",
+  "metadata": {
+    "title": "Bernard LaFayette, Selma voting rights organizer, has died",
+    "timestamp": "2026-03-05T23:34:14.303151",
+    "url": "https://ground.news/article/bernard-lafayette-selma-voting-rights-organizer-has-died"
+  },
+  "bias_distribution": {
+    "total_sources": "81",
+    "leaning_left": "12",
+    "center": "62",
+    "leaning_right": "1"
+  },
+  "perspective_summaries": {
+    "left": [
+      "Bernard LaFayette was a key organizer in the 1960s Selma voter registration campaign that contributed to the 1965 Voting Rights Act.",
+      "He survived violence and an assassination attempt while organizing nonviolent civil rights efforts in Alabama and later trained youth leaders and worked on tenant protections in Chicago.",
+      "LaFayette was close to major civil rights figures, worked on significant campaigns including the second Selma-to-Montgomery march, and completed advanced education after the civil rights era.",
+      "He later taught nonviolence globally and held academic and leadership roles, with his legacy recognized for its lasting impact on civil rights in the U.S. and abroad."
+    ],
+    "center": [
+      "Bernard LaFayette, civil rights organizer, died Thursday morning of a heart attack, his son Bernard LaFayette, III, said.",
+      "As director of the Alabama Voter Registration Campaign, Bernard LaFayette led advance work in Selma long ago that helped set the stage for the Voting Rights Act of 1965.",
+      "He was beaten outside his home, a neighbor with a rifle was called, and LaFayette later asked him not to shoot, surviving an assassination attempt on the night Medgar Evers was murdered.",
+      "DeMark Liggins, president of the Southern Christian Leadership Conference, said LaFayette's legacy lives in thousands he helped, with Chicago organizing credited for tenant protections and health efforts.",
+      "LaFayette also coordinated national campaigns and served in university leadership roles, including director of Peace and Justice in Latin America and at the University of Rhode Island."
+    ],
+    "right": [
+      "Bernard LaFayette, civil rights organizer, died Thursday morning of a heart attack, his son Bernard LaFayette, III, said.",
+      "As director of the Alabama Voter Registration Campaign, Bernard LaFayette led advance work in Selma long ago that helped set the stage for the Voting Rights Act of 1965.",
+      "He was beaten outside his home, a neighbor with a rifle was called, and LaFayette later asked him not to shoot, surviving an assassination attempt on the night Medgar Evers was murdered.",
+      "DeMark Liggins, president of the Southern Christian Leadership Conference, said LaFayette's legacy lives in thousands he helped, with Chicago organizing credited for tenant protections and health efforts.",
+      "LaFayette also coordinated national campaigns and served in university leadership roles, including director of Peace and Justice in Latin America and at the University of Rhode Island."
+    ]
+  },
+  "sources": [
+    {
+      "news_title": "Bernard LaFayette Laid Groundwork for Selma",
+      "news_link": "https://www.newser.com/story/384905/bernard-lafayette-laid-groundwork-for-selma.html",
+      "bias": "Lean Left",
+      "text": null
+    },
+    {
+      "news_title": "Bernard LaFayette, Freedom Rider and Selma voting rights organizer, dies at 85",
+      "news_link": "https://www.pbs.org/newshour/nation/bernard-lafayette-freedom-rider-and-selma-voting-rights-organizer-dies-at-85",
+      "bias": "Lean Left",
+      "text": null
+    },
+    {
+      "news_title": "Bernard LaFayette, Selma voting rights organizer and leader with the Chicago Freedom Movement, dies at 85",
+      "news_link": "https://www.chicagotribune.com/2026/03/05/bernard-lafayette-selma-voting-rights-organizer/",
+      "bias": "Center",
+      "text": null
+    },
+    {
+      "news_title": "Bernard LaFayette, civil rights leader known for Freedom Rides and voting rights in Selma, dies at 85",
+      "news_link": "https://www.wvtm13.com/article/bernard-lafayette-voting-rights-act-selma-civil-rights-movement/70629397",
+      "bias": "Center",
+      "text": null
+    },
+    {
+      "news_title": "Bernard LaFayette, Selma voting rights organizer, has died",
+      "news_link": "https://apnews.com/article/bernard-lafayette-voting-rights-organizer-dies-f2f526a1a0b911edb9ef3c219cee77e8",
+      "bias": "Lean Left",
+      "text": null
+    }
+  ]
+}

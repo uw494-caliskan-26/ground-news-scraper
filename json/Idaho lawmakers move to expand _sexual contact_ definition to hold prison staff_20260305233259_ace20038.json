@@ -1,0 +1,51 @@
+{
+  "story_id": "Idaho lawmakers move to expand _sexual contact_ definition to hold prison staff_20260305233259_ace20038",
+  "metadata": {
+    "title": "Idaho lawmakers move to expand ‘sexual contact’ definition to hold prison staff accountable",
+    "timestamp": "2026-03-05T23:33:05.271063",
+    "url": "https://ground.news/article/idaho-lawmakers-move-to-expand-sexual-contact-definition-to-hold-prison-staff-accountable"
+  },
+  "bias_distribution": {
+    "total_sources": "8",
+    "leaning_left": "1",
+    "center": "7",
+    "leaning_right": "0"
+  },
+  "perspective_summaries": {
+    "left": [
+      "On Friday, Feb. 27 the House Judiciary, Rules and Administration Committee unanimously advanced House Bill 696, which would expand Idaho's legal definition of sexual contact, sending it to the full House.",
+      "Spurred by InvestigateWest's investigation, lawmakers seek changes after reporting exposed sexual-abuse allegations against women's prison staff and Idaho's 1993 'sexual contact with a prisoner' law omits kissing and groping.",
+      "At last week's hearing, survivor Andrea Weiskircher said she accused five prison workers, and three other Idaho women urged lawmakers to pass the bill, including Audrey Numbers.",
+      "Supporters say the change could lead to more investigations and prosecutions, with Tina Transue, Department of Correction government relations advisor, saying `we're excited that it gives us more teeth`; if passed, the bill still must clear the Senate and the governor.",
+      "Erickson said the proposal alone is insufficient and signaled next year’s internal investigations reforms, while Idaho State Police indicated they will ramp up efforts against prison staff misconduct."
+    ],
+    "center": [
+      "On Friday, Feb. 27 the House Judiciary, Rules and Administration Committee unanimously advanced House Bill 696, which would expand Idaho's legal definition of sexual contact, sending it to the full House.",
+      "Spurred by InvestigateWest's investigation, lawmakers seek changes after reporting exposed sexual-abuse allegations against women's prison staff and Idaho's 1993 'sexual contact with a prisoner' law omits kissing and groping.",
+      "At last week's hearing, survivor Andrea Weiskircher said she accused five prison workers, and three other Idaho women urged lawmakers to pass the bill, including Audrey Numbers.",
+      "Supporters say the change could lead to more investigations and prosecutions, with Tina Transue, Department of Correction government relations advisor, saying `we're excited that it gives us more teeth`; if passed, the bill still must clear the Senate and the governor.",
+      "Erickson said the proposal alone is insufficient and signaled next year’s internal investigations reforms, while Idaho State Police indicated they will ramp up efforts against prison staff misconduct."
+    ],
+    "right": [
+      "On Friday, Feb. 27 the House Judiciary, Rules and Administration Committee unanimously advanced House Bill 696, which would expand Idaho's legal definition of sexual contact, sending it to the full House.",
+      "Spurred by InvestigateWest's investigation, lawmakers seek changes after reporting exposed sexual-abuse allegations against women's prison staff and Idaho's 1993 'sexual contact with a prisoner' law omits kissing and groping.",
+      "At last week's hearing, survivor Andrea Weiskircher said she accused five prison workers, and three other Idaho women urged lawmakers to pass the bill, including Audrey Numbers.",
+      "Supporters say the change could lead to more investigations and prosecutions, with Tina Transue, Department of Correction government relations advisor, saying `we're excited that it gives us more teeth`; if passed, the bill still must clear the Senate and the governor.",
+      "Erickson said the proposal alone is insufficient and signaled next year’s internal investigations reforms, while Idaho State Police indicated they will ramp up efforts against prison staff misconduct."
+    ]
+  },
+  "sources": [
+    {
+      "news_title": "Idaho lawmakers move to close gap in prison sex abuse law",
+      "news_link": "https://apnews.com/article/idaho-general-news-crime-marco-erickson-legislation-ad9324453d52d2a81d2e8060126b57f6",
+      "bias": "Lean Left",
+      "text": null
+    },
+    {
+      "news_title": "Idaho lawmakers move to expand ‘sexual contact’ definition to hold prison staff accountable",
+      "news_link": "https://localnews8.com/news/2026/03/04/idaho-lawmakers-move-to-expand-sexual-contact-definition-to-hold-prison-staff-accountable/",
+      "bias": "Center",
+      "text": null
+    }
+  ]
+}

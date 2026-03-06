@@ -1,0 +1,107 @@
+{
+  "story_id": "Elon Musk defends tweets in lawsuit alleging they caused Twitter stock to fall b_20260305232802_b448a242",
+  "metadata": {
+    "title": "Elon Musk defends tweets in lawsuit alleging they caused Twitter stock to fall before acquisition",
+    "timestamp": "2026-03-05T23:28:12.730061",
+    "url": "https://ground.news/article/elon-musk-testifies-in-sf-court-over-twitter-purchase-says-company-lied-about-bot-accounts_8b00fa"
+  },
+  "bias_distribution": {
+    "total_sources": "47",
+    "leaning_left": "9",
+    "center": "32",
+    "leaning_right": "4"
+  },
+  "perspective_summaries": {
+    "left": [
+      "Elon Musk testified in a trial that his tweets criticizing Twitter during the 2022 acquisition were not intended to lower the company's stock price.",
+      "The lawsuit alleges that Musk made false statements about Twitter's spam or fake accounts to delay or reduce the buyout price, which caused the stock price to fall sharply."
+    ],
+    "center": [
+      "On Wednesday, Elon Musk took the stand in a San Francisco federal trial where shareholders accuse him of misleading statements before his 2022 purchase of Twitter for $44 billion.",
+      "Elon Musk's tweets about bots included claims nearly 20% of Twitter accounts were `fake`, causing Twitter's stock to fall nearly 10% on May 13.",
+      "Plaintiffs' lawyer Aaron Arnzen argued Musk waived due diligence and mounted a spectacle to lower the stock, while Musk told jurors `If this was a trial on whether I've made stupid tweets, I'd say I'm guilty`.",
+      "The lawsuit claims Musk violated federal securities laws by making false public statements, with shareholders seeking billions in damages if the jury rules in their favor.",
+      "Beyond this case, Musk is scheduled for an Oakland trial next month and has testified about a Tesla $420-per-share deal years ago, along with disputes involving OpenAI."
+    ],
+    "right": [
+      "Elon Musk testified that his social media posts during his acquisition of Twitter in 2022 were not intended to lower the company's purchase price or manipulate the market.",
+      "Musk stated his tweets were 'extremely literal' and reflected his immediate thoughts, without expecting Twitter's share price to drop as a result.",
+      "Twitter stockholders accuse Musk of misleading statements causing investment losses after he announced pulling out of the deal, seeking damages.",
+      "Musk's lawyer argued Musk sought the truth about bots on Twitter, while plaintiffs' counsel claimed Musk aimed to renegotiate or cancel the deal by publicly criticizing the company."
+    ]
+  },
+  "sources": [
+    {
+      "news_title": "Elon Musk says judge’s bias forced him to close Twitter buyout",
+      "news_link": "https://www.mercurynews.com/2026/03/05/musk-says-judges-bias-forced-him-to-close-twitter-buyout/",
+      "bias": "Lean Left",
+      "text": null
+    },
+    {
+      "news_title": "Elon Musk defends tweets in lawsuit alleging they caused Twitter stock to fall before acquisition",
+      "news_link": "https://apnews.com/article/elon-musk-twitter-shareholders-court-class-action-a5ce0d4a3e5488545c6adc870e746274",
+      "bias": "Lean Left",
+      "text": null
+    },
+    {
+      "news_title": "Elon Must defends tweets in lawsuit over Twitter stock drop before buyout",
+      "news_link": "https://www.nbcbayarea.com/news/local/elon-musk-lawsuit-twitter-buyout/4047233/",
+      "bias": "Lean Left",
+      "text": null
+    },
+    {
+      "news_title": "Musk testifies tweet that led to $44 billion lawsuit \"may not have been my wisest\"",
+      "news_link": "https://arstechnica.com/tech-policy/2026/03/musk-testifies-tweet-that-led-to-44-billion-lawsuit-may-not-have-been-my-wisest/",
+      "bias": "Center",
+      "text": null
+    },
+    {
+      "news_title": "Musk takes stand in Twitter shareholder trial",
+      "news_link": "https://bismarcktribune.com/article_4d73cecb-9396-5800-8178-529fd3d49087.html",
+      "bias": "Center",
+      "text": null
+    },
+    {
+      "news_title": "Elon Musk takes the stand in Twitter shareholder trial",
+      "news_link": "https://omaha.com/eedition/sunrise/articles/article_86d2ea36-413b-5b31-9773-35cb94fa6fe7.html",
+      "bias": "Center",
+      "text": null
+    },
+    {
+      "news_title": "Musk testifies posts during Twitter acquisiton were not effort to lower price",
+      "news_link": "https://www.upi.com/Top_News/US/2026/03/05/Twitter-investor-suit-Musk-defends-posts/8961772715877/",
+      "bias": "Center",
+      "text": null
+    },
+    {
+      "news_title": "Musk Faces Trial Over ‘Scheme to Deceive the Market.’",
+      "news_link": "https://thenationalpulse.com/2026/03/04/musk-faces-trial-in-san-francisco-over-scheme-to-deceive-the-market/",
+      "bias": "Right",
+      "text": null
+    },
+    {
+      "news_title": "Musk takes the stand in the trial where he's accused of deflating Twitter stock ahead of purchase",
+      "news_link": "https://www.latimes.com/business/story/2026-03-04/musk-takes-stand-in-trial-accusing-him-of-deflating-twitter-stock-ahead-of-purchase",
+      "bias": "Lean Left",
+      "text": null
+    },
+    {
+      "news_title": "Elon Musk testifies in S.F. court over Twitter purchase, says company ‘lied’ about bot accounts",
+      "news_link": "https://www.sfchronicle.com/sf/article/elon-musk-twitter-lawsuit-court-21955188.php",
+      "bias": "Lean Left",
+      "text": null
+    },
+    {
+      "news_title": "Elon Musk takes stand in Twitter shareholder trial in San Francisco federal court",
+      "news_link": "https://www.ktvu.com/news/elon-musk-twitter-san-francisco-trial",
+      "bias": "Center",
+      "text": null
+    },
+    {
+      "news_title": "Elon Musk to Testify Over Twitter Takeover Lawsuit",
+      "news_link": "https://businesselitesafrica.com/elon-musk-to-testify-over-twitter-takeover-lawsuit/",
+      "bias": "unknown",
+      "text": null
+    }
+  ]
+}
