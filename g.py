@@ -234,7 +234,7 @@ def scrape_all_topics_from_homepage():
             WebDriverWait(driver, 10).until(EC.presence_of_all_elements_located(
                 (By.XPATH, "/html/body/main/article/div[16]")
             ))
-            topic_elements = driver.find_elements(By.CSS_SELECTOR, '[data-test-id="story-item"]')
+            topic_elements = driver.find_elements(By.XPATH, "/html/body/main/article/div[16]//a[contains(@href, '/article/')]")
             for element in topic_elements:
                 href = element.get_attribute('href')
                 if href:
