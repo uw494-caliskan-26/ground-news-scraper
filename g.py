@@ -30,6 +30,8 @@ DEBUG_DIR = "debug"
 MAX_TOPICS = 5
 HOMEPAGE_SCAN_LIMIT = 150  # gather more than needed, then trim to 5
 
+SOURCE_CSV_FILE = os.path.join("dataset", "sources.csv")
+SOURCE_CSV_FIELDS = ["story_id", "source_news_title", "source_news_link", "source_text", "source_bias"]
 
 CSV_FIELDS = [
     "story_id", "title", "url", "timestamp",
@@ -240,10 +242,35 @@ def save_results(results):
             writer.writerow(_flatten(data))
     print(f"[Saved {len(results)} total results -> {RESULTS_FILE}]")
 
+def append_sources_to_csv(story_data):
+    """
+    Given a structured story (as from fetch_article_data), append each source to dataset/sources.csv
+    """
+    if not story_data or "sources" not in story_data:
+        return
+
+    os.makedirs(os.path.dirname(SOURCE_CSV_FILE), exist_ok=True)
+    file_exists = os.path.exists(SOURCE_CSV_FILE)
+
+    with open(SOURCE_CSV_FILE, "a", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=SOURCE_CSV_FIELDS)
+
+        # write header only if file didn't exist
+        if not file_exists:
+            writer.writeheader()
+
+        for src in story_data["sources"]:
+            writer.writerow({
+                "story_id": story_data["story_id"],
+                "source_news_title": src.get("news_title", ""),
+                "source_news_link": src.get("news_link", ""),
+                "source_text": src.get("text", ""),
+                "source_bias": src.get("bias", ""),
+            })
 
 def init_driver():
     options = webdriver.ChromeOptions()
-    is_ci = os.environ.get("CI") or os.environ.get("GITHUB_ACTIONS")
+    is_ci = os.environ.get("CI") or os.environ.get("GITHUB_ACTIONS") or True  # force headless
 
     if is_ci:
         options.add_argument("--headless=new")
@@ -696,6 +723,7 @@ def fetch_article_data(driver, url):
         with open(out_path, "w", encoding="utf-8") as f:
             json.dump(structured_data, f, indent=2, ensure_ascii=False)
 
+        append_sources_to_csv(structured_data)
         print(f"Saved: {out_path}")
         return structured_data
 
