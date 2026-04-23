@@ -160,12 +160,15 @@ def append_sources_to_csv(story_data):
             writer.writeheader()
 
         for src in story_data["sources"]:
+            text = src.get("text") or ""
+            text = " ".join(text.split())  # collapses all whitespace/newlines to single spaces
+
             writer.writerow({
                 "story_id": story_data["story_id"],
                 "story_url": story_data["metadata"].get("url", ""),
                 "source_news_title": src.get("news_title", ""),
                 "source_news_link": src.get("news_link", ""),
-                "source_text": src.get("text", ""),
+                "source_text": text,
                 "source_bias": src.get("bias", ""),
             })
 
