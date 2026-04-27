@@ -1,0 +1,28 @@
+{
+  "story_id": "J_J sees AI halving the time to generate drug development leads_20260427215020_2e01bfed",
+  "metadata": {
+    "title": "J&J sees AI halving the time to generate drug development leads",
+    "timestamp": "2026-04-27T21:50:45.736777",
+    "url": "https://ground.news/article/j-and-j-sees-ai-halving-the-time-to-generate-drug-development-leads"
+  },
+  "bias_distribution": {
+    "total_sources": "",
+    "leaning_left": "Center",
+    "center": "Right",
+    "leaning_right": ""
+  },
+  "sources": [
+    {
+      "news_title": "J&J sees AI halving the time to generate drug development leads",
+      "news_link": "https://www.reuters.com/business/healthcare-pharmaceuticals/jj-sees-ai-halving-time-generate-drug-development-leads-2026-04-27",
+      "bias": "Center",
+      "text": null
+    },
+    {
+      "news_title": "J&J: AI Halves Time to New Drug Development Leads",
+      "news_link": "https://www.newsmax.com/health/health-news/j-j-drug-development/2026/04/27/id/1254343",
+      "bias": "Right",
+      "text": "Johnson & Johnson is using artificial intelligence to slash by half the time it takes to generate new leads for developing drugs, the company's chief information officer said on Monday.\nDiscovering new products outright and bringing them to market using AI is not yet possible, but J&J is using the new technology to screen the \"potential universe\" for promising chemical compounds or biologics, CIO Jim Swanson said at the Reuters Momentum AI event in New York.\n\"That's still a ways away, but we can optimize,\" Swanson said. \"We've cut our lead optimization time in half.\"\nThe New Jersey-based pharmaceutical and medical device company has been working toward a more-focused approach to AI, honing in on core processes like AI-enabled products, drug development and supply chain optimization.\n\"We're trying to cure cancer,\" Swanson said. \"We need every tool that we can leverage to be able to do that.\"\nThrough the use of AI, Swanson said the company has already accelerated the development process for two compounds - one in oncology and another in immunology. The company is working to develop new drugs as it moves past the patent expiration of Stelara, one of its top-selling medicines, used to treat psoriasis and other autoimmune conditions.\nFASTER MAPPING, PRECISION CUTTING\nIn J&J's medical devices business, the company is using AI in products to help surgeons in the operating room, Swanson said. AI has reduced times to map the heart for procedures to correct arrhythmias and improved precision for knee and hip replacements, he said.\nAI has been useful in manufacturing, helping to determine when to add solvent at the appropriate time and temperature, Swanson said.\nJ&J is also using AI to streamline preparation of documents for regulators. The traditional process for a clinical trial report can take 700 to 900 hours, the CIO said.\nThat time has gone from \"700 hours to about 15 minutes,\" Swanson said.\nOther companies have said AI is helping find participants and sites for clinical trials and drafting documents for regulators, shaving weeks off labor-intensive processes. It can take a decade and cost billions to bring a new drug to market.\n\"We treat patients all around the world, and so we want to make sure that in our clinical studies they represent the patient populations that we're serving,\" Swanson said. \"AI is being used to make sure we can accelerate enrollment with diverse patient populations.\"\nSwanson said rather than people being replaced by the technology, he sees using AI as an additional skill for the company's employees. J&J currently has about 4,000 information technology employees out of 140,000 total.\n\"A software engineer isn't getting replaced, now their role is expanding,\" he said. \"Our focus continues to be on skills. These are 'and' skills, not 'or' skills.\" (Reporting by Michael Erman; writing by Chris Prentice; Editing by Caroline Humer and Bill Berkrot)\n© 2026 Thomson/Reuters. All rights reserved."
+    }
+  ]
+}
