@@ -1,0 +1,46 @@
+{
+  "story_id": "U_S_ stocks mixed at close of trade_ Dow Jones Industrial Average down 0_31__20260501214625_54ab530f",
+  "metadata": {
+    "title": "U.S. stocks mixed at close of trade; Dow Jones Industrial Average down 0.31%",
+    "timestamp": "2026-05-01T21:46:47.962059",
+    "url": "https://ground.news/article/us-stocks-mixed-at-close-of-trade-dow-jones-industrial-average-down-031"
+  },
+  "bias_distribution": {
+    "total_sources": "",
+    "leaning_left": "1",
+    "center": "4",
+    "leaning_right": "china.org.cn"
+  },
+  "sources": [
+    {
+      "news_title": "U.S. stocks close mixed",
+      "news_link": "http://www.china.org.cn/world/Off_the_Wire/2026-05/02/content_118474141.shtml",
+      "bias": "Left",
+      "text": "NEW YORK, May 1 (Xinhua) -- U.S. stocks ended mixed on Friday.\nThe Dow Jones Industrial Average fell by 152.87 points, or 0.31 percent, to 49,499.27. The S&P 500 added 21.11 points, or 0.29 percent, to 7,230.12. The Nasdaq Composite Index increased by 222.13 points, or 0.89 percent, to 25,114.44.\nNine of the 11 primary S&P 500 sectors ended in the red, with energy and industrials leading the laggards by losing 1.31 percent and 0.93 percent, respectively. Meanwhile, technology and consumer discretionary led the gainers by adding 1.41 percent and 0.51 percent, respectively. Enditem"
+    },
+    {
+      "news_title": "U.S. stocks mixed at close of trade; Dow Jones Industrial Average down 0.31%",
+      "news_link": "https://www.investing.com/news/stock-market-news/us-stocks-mixed-at-close-of-trade-dow-jones-industrial-average-down-031-4654407",
+      "bias": "Center",
+      "text": null
+    },
+    {
+      "news_title": "U.S. Markets Closed Mixed Friday As Pershing Square Led, Summit Therapeutics Lagged",
+      "news_link": "https://www.barrons.com/articles/u-s-markets-closed-mixed-friday-as-pershing-square-led-summit-therapeutics-lagged-de5fbd02",
+      "bias": "Center",
+      "text": null
+    },
+    {
+      "news_title": "S&P 500 Extends Longest Weekly Winning Streak Since Late 2024",
+      "news_link": "https://www.wsj.com/finance/stocks/s-p-500-extends-longest-weekly-winning-streak-since-late-2024-7cefd3ad",
+      "bias": "Center",
+      "text": null
+    },
+    {
+      "news_title": "US Equity Indexes Close Mixed as Earnings Lift Technology While Trump 'Not Happy' With Iran Peace Plan",
+      "news_link": "https://www.marketscreener.com/news/us-equity-indexes-close-mixed-as-earnings-lift-technology-while-trump-not-happy-with-iran-peace-pl-ce7f58d9de80f120",
+      "bias": "Center",
+      "text": "US Equity Indexes Close Mixed as Earnings Lift Technology While Trump 'Not Happy' With Iran Peace Plan\nPublished on 05/01/2026 at 04:53 pm EDT\nMT Newswires\nShare\n© MT Newswires -\n2026\nShare"
+    }
+  ]
+}
