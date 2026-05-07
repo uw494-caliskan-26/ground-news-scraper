@@ -1,0 +1,28 @@
+{
+  "story_id": "College students overestimate starting salaries by _24K_ Survey_20260507215411_1f4266cf",
+  "metadata": {
+    "title": "College students overestimate starting salaries by $24K: Survey",
+    "timestamp": "2026-05-07T21:54:31.679568",
+    "url": "https://ground.news/article/college-students-overestimate-starting-salaries-by-24k-survey"
+  },
+  "bias_distribution": {
+    "total_sources": "",
+    "leaning_left": "Center",
+    "center": "Right",
+    "leaning_right": ""
+  },
+  "sources": [
+    {
+      "news_title": "College students overestimate starting salaries by $24,000: Survey",
+      "news_link": "https://myfox8.com/news/college-students-overestimate-starting-salaries-by-24000-survey",
+      "bias": "Center",
+      "text": null
+    },
+    {
+      "news_title": "College students overestimate starting salaries by $24K: Survey",
+      "news_link": "https://phl17.com/nmw/college-students-overestimate-starting-salaries-by-24k-survey",
+      "bias": "Center",
+      "text": null
+    }
+  ]
+}
