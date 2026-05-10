@@ -1,0 +1,46 @@
+{
+  "story_id": "Rare earths deal between US and China is still in effect_ US official says_20260510214700_1344f01e",
+  "metadata": {
+    "title": "Rare earths deal between US and China is still in effect, US official says",
+    "timestamp": "2026-05-10T21:47:23.833004",
+    "url": "https://ground.news/article/us-government-confirms-rare-earths-deal-with-china-remains-in-effect"
+  },
+  "bias_distribution": {
+    "total_sources": "",
+    "leaning_left": "Center",
+    "center": "Right",
+    "leaning_right": ""
+  },
+  "sources": [
+    {
+      "news_title": "US-China rare earths deal still in effect amid Trump-Xi meeting, US official says",
+      "news_link": "https://www.trtworld.com/article/51034da938f5",
+      "bias": "Right",
+      "text": "A rare earths agreement between the United States and China remains in force, with Washington signalling that any extension will be announced at the appropriate time, a senior US official said on Sunday.\nUS President Donald Trump and his Chinese counterpart Xi Jinping are set to meet in Beijing on May 14 and 15 for high-level talks.\n\"It's still in effect. It doesn't expire yet,\" the official told reporters, adding conversations are ongoing but it wasn't clear yet if the deal will be extended.\n\"I'm confident we'll announce any potential extension at the appropriate time.\"\nThe upcoming summit is expected to cover a range of sensitive issues, including the US-Israeli war on Iran, trade tensions, Taiwan and other geopolitical flashpoints.\nThe two leaders last met in October in South Korea, where they agreed to pause a damaging trade war.\nThat dispute had seen Washington impose triple-digit tariffs on Chinese goods, while Beijing threatened restrictions on global rare earth supplies."
+    },
+    {
+      "news_title": "Rare earths deal between US and China is still in effect, US official says",
+      "news_link": "https://www.reuters.com/world/china/rare-earths-deal-between-us-china-is-still-effect-us-official-says-2026-05-10",
+      "bias": "Center",
+      "text": null
+    },
+    {
+      "news_title": "Senior U.S. official: rare earths deal between US and China is still in effect",
+      "news_link": "https://www.marketscreener.com/news/senior-u-s-official-rare-earths-deal-between-us-and-china-is-still-in-effect-ce7f5bd8da80f221",
+      "bias": "Center",
+      "text": "Senior U.S. official: rare earths deal between US and China is still in effect\nPublished on 05/10/2026 at 02:17 pm EDT\nReuters\nShare\n© Reuters -\n2026\nShare"
+    },
+    {
+      "news_title": "US government confirms rare earths deal with China remains in effect",
+      "news_link": "https://bitrss.com/us-government-confirms-rare-earths-deal-with-china-remains-in-effect-209293",
+      "bias": "unknown",
+      "text": null
+    },
+    {
+      "news_title": "Rare earths deal between US, China still in effect, US official says",
+      "news_link": "https://www.tbsnews.net/world/rare-earths-deal-between-us-china-still-effect-us-official-says-1435511",
+      "bias": "unknown",
+      "text": "Rare earths deal between US, China still in effect, US official says\nPresident Donald Trump and Chinese President Xi Jinping will meet in Beijing on 14 and 15 May\nA rare earths deal between the United States and China is still in effect and an extension will be announced at the appropriate time, a senior US official told reporters on Sunday.\nPresident Donald Trump and Chinese President Xi Jinping will meet in Beijing on 14 and 15 May."
+    }
+  ]
+}
