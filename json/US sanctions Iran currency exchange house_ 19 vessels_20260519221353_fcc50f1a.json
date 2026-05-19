@@ -1,0 +1,46 @@
+{
+  "story_id": "US sanctions Iran currency exchange house_ 19 vessels_20260519221353_fcc50f1a",
+  "metadata": {
+    "title": "US sanctions Iran currency exchange house, 19 vessels",
+    "timestamp": "2026-05-19T22:14:15.321322",
+    "url": "https://ground.news/article/us-targets-19-tankers-shadow-banks-in-major-new-iran-sanctions-crackdown"
+  },
+  "bias_distribution": {
+    "total_sources": "",
+    "leaning_left": "Center",
+    "center": "Right",
+    "leaning_right": ""
+  },
+  "sources": [
+    {
+      "news_title": "US sanctions Iran currency exchange house, 19 vessels",
+      "news_link": "https://thehill.com/homenews/administration/5885684-us-sanctions-iran-currency-vessels-middle-east-conflict",
+      "bias": "Center",
+      "text": null
+    },
+    {
+      "news_title": "US sanctions Iran’s ‘shadow banking’ network, blacklists 19 vessels in fresh pressure campaign",
+      "news_link": "https://www.firstpost.com/world/us-sanctions-irans-shadow-banking-network-blacklists-19-vessels-in-fresh-pressure-campaign-14012976.html",
+      "bias": "Center",
+      "text": null
+    },
+    {
+      "news_title": "U.S. Targets 19 Tankers, Shadow Banks in Major New Iran Sanctions Crackdown",
+      "news_link": "https://gcaptain.com/u-s-targets-19-tankers-shadow-banks-in-major-new-iran-sanctions-crackdown",
+      "bias": "Center",
+      "text": "The Trump administration on Tuesday unveiled one of its broadest sanctions actions yet under its “Economic Fury” campaign, targeting more than 50 companies, individuals, and vessels tied to Iran’s shadow banking and shipping networks as Washington intensifies pressure on Tehran amid the ongoing Strait of Hormuz crisis.\nThe U.S. Treasury Department’s Office of Foreign Assets Control (OFAC) announced sanctions against Iranian exchange house Amin Exchange and a sprawling network of front companies accused of moving hundreds of millions of dollars on behalf of sanctioned Iranian banks and petrochemical interests. Treasury also designated 19 vessels allegedly involved in transporting Iranian oil, LPG, methanol, naphtha, and petrochemicals to foreign buyers.\n“Iran’s shadow banking system facilitates the illicit transfer of funding for terrorist purposes,” Treasury Secretary Scott Bessent said in the announcement. “As Treasury systematically dismantles Tehran’s shadow banking system and shadow fleet under Economic Fury, financial institutions must be alert to how the regime manipulates the international financial system to wreak havoc.”\nThe action comes as the Trump administration continues its economic blockade strategy against Iran following the outbreak of war in late February and Tehran’s tightening grip over commercial traffic through the Strait of Hormuz.\nAccording to Treasury, Iranian exchange houses collectively facilitate billions of dollars in foreign currency transactions annually, enabling the regime to evade sanctions, access the global financial system, and repatriate revenues from oil and petrochemical sales.\nAt the center of Tuesday’s action is Iran-based Ebrahimi and Associates Partnership Company, better known as Amin Exchange, which Treasury described as a major player in Iran’s foreign exchange market. The company allegedly worked with sanctioned Iranian banks, the National Iranian Oil Company, Persian Gulf Petrochemical Industry Commercial Company (PGPICC), and Triliance Petrochemical Co. Ltd. to facilitate overseas transactions.\nTreasury said Amin Exchange maintained a network of front companies across the UAE, Türkiye, Hong Kong, and China that were used to conduct cross-border money laundering and sanctions evasion activities tied to Iran’s petroleum, petrochemical, manufacturing, metals, and automobile sectors.\nThe sanctions package also heavily targeted Iran-linked maritime operations, adding 19 vessels to the SDN list, including crude tankers, LPG carriers, and chemical tankers flagged in jurisdictions including Panama, Palau, Cameroon, Sierra Leone, Gabon, Comoros, San Marino, and Vanuatu.\nAmong the vessels named were the Panama-flagged tanker TEJAS, the Vanuatu-flagged crude tanker FEADSHIP, the LPG carrier MIGHTY NAVIGATOR, and the tanker LUNA LUSTER, all accused of transporting Iranian-origin cargoes since 2025 or 2026.\nTreasury said the measures are designed to directly undermine Tehran’s ability to generate revenue through oil exports and covert shipping activity.\n“Any person or vessel facilitating the illicit trade of oil or other commodities, through covert trade or financial channels, risks exposure to U.S. sanctions,” Treasury warned.\nThe administration also reiterated that secondary sanctions could be imposed on foreign financial institutions and companies facilitating Iranian trade, including entities tied to China’s independent “teapot” refineries.\nThe latest measures further tighten pressure on Iran’s maritime sector as commercial traffic through Hormuz remains severely disrupted more than two months into the crisis. Treasury said the sanctions are part of a broader campaign that has already disrupted billions of dollars in projected Iranian oil revenue and frozen nearly half a billion dollars in regime-linked cryptocurrency assets.\nEditorial Standards · Corrections · About gCaptain"
+    },
+    {
+      "news_title": "U.S. issues new sanctions against Iran",
+      "news_link": "https://english.news.cn/northamerica/20260520/6ee549a1823e4792896630dcad6fb8a2/c.html",
+      "bias": "Left",
+      "text": "NEW YORK, May 19 (Xinhua) -- The U.S. Department of the Treasury's Office of Foreign Assets Control (OFAC) on Tuesday designated and blocked a prominent Iranian foreign currency exchange house and associated front companies, claiming they oversee hundreds of millions of dollars in transactions on behalf of sanctioned Iranian banks.\nThe action, part of the U.S. Economic Fury campaign, targets more than 50 companies, individuals and vessels generating revenue for Tehran, the department said in a press release.\nIn addition, OFAC also blocked 19 vessels involved in Iranian petroleum and petrochemical shipments to foreign customers, \"transactions that have generated hundreds of millions of dollars in revenue.\"\nThe department is also prepared to take action against foreign companies supporting illicit Iranian commerce, including airlines, and may impose secondary sanctions on foreign financial institutions that facilitate Iran's activities, if necessary, the release said. ■"
+    },
+    {
+      "news_title": "US imposes fresh sanctions on Iranian exchange house, shadow fleet vessels",
+      "news_link": "https://www.reuters.com/business/finance/us-imposes-fresh-sanctions-iranian-exchange-house-shadow-fleet-vessels-2026-05-19",
+      "bias": "Center",
+      "text": null
+    }
+  ]
+}
