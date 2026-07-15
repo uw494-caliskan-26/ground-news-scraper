@@ -1,0 +1,46 @@
+{
+  "story_id": "Pentagon Bars Release of GAO_s Report on F-35 Program_20260715215307_acb8c853",
+  "metadata": {
+    "title": "Pentagon Bars Release of GAO's Report on F-35 Program",
+    "timestamp": "2026-07-15T21:53:27.806786",
+    "url": "https://ground.news/article/pentagon-blocks-review-of-f-35-project-for-first-time-in-over-20-years"
+  },
+  "bias_distribution": {
+    "total_sources": "",
+    "leaning_left": "Center",
+    "center": "Right",
+    "leaning_right": ""
+  },
+  "sources": [
+    {
+      "news_title": "Pentagon Blocks Watchdog’s Review of Costly F-35 Program",
+      "news_link": "https://www.bloomberg.com/news/articles/2026-07-15/pentagon-blocks-watchdog-s-review-of-costly-f-35-program",
+      "bias": "Lean Left",
+      "text": null
+    },
+    {
+      "news_title": "Pentagon bars release of GAO's report on F-35 program",
+      "news_link": "https://thehill.com/policy/defense/5969844-pentagon-bars-f35-watchdog-report",
+      "bias": "Center",
+      "text": null
+    },
+    {
+      "news_title": "Pentagon blocks GAO report on F-35 jet program",
+      "news_link": "https://justthenews.com/politics-policy/pentagon-blocks-gao-report-f-35-jet-program",
+      "bias": "Lean Right",
+      "text": "Pentagon blocks GAO report on F-35 jet program\nThe F-35 Lightning II has been in production since 2006 and is operated by the U.S., Japan, South Korea, and many NATO members.\nThe Department of War this week blocked the release of a report from the Government Accountability Office (GAO) on the F-35 jet program, drawing scrutiny from critics of the program.\nThe F-35 program has been mired in cost overruns and technical failures for years. The GAO report on the program was blocked from public release, Bloomberg reported. The GAO, moreover, confirmed to The Hill that the report contained information flagged by the Pentagon and would not be released to the public.\nGAO was reportedly critical of efforts to put the program on track and suggested that increased funding to incentivize contractors to improve had not yielded results.\nIndustry analysts reacted skeptically to the news of the report being stifled. The Quincy Institute for Responsible Statecraft's Ben Freeman, for instance, suggested that keeping the report private signaled the presence of greater issues within the program.\n\"What is the Pentagon trying to hide about the most expensive weapons program in history?\" he said. \"By not publicly releasing this report, you're throwing up a giant red flag that something is seriously wrong with the F-35.\"\nThe F-35 Lightning II has been in production since 2006 and is operated by the U.S., Japan, South Korea, and many NATO members.\nBen Whedon is the Chief Political Correspondent for Just the News. Follow him on X."
+    },
+    {
+      "news_title": "Pentagon withholds yearly F-35 review amid watchdog oversight",
+      "news_link": "https://seekingalpha.com/news/4614026-pentagon-withholds-yearly-f-35-review-amid-watchdog-oversight",
+      "bias": "Lean Right",
+      "text": null
+    },
+    {
+      "news_title": "Pentagon blocks review of F-35 project for first time in over 20 years",
+      "news_link": "https://www.scmp.com/news/world/united-states-canada/article/3360686/pentagon-blocks-review-f-35-fighter-jet-project-first-time-over-20-years",
+      "bias": "Center",
+      "text": "Pentagon blocks review of F-35 fighter jet project for first time in over 20 years\nThe Controlled Unclassified Information label has been criticised for allowing the Defence Department to block data from going public\nThe non-partisan Government Accountability Office (GAO) said Defence Department officials concluded its yearly assessment of the US$1.6 trillion programme contained Controlled Unclassified Information (CUI) – which meant none of the report could be released to the public.\nThe report has offered a key window into the world’s costliest and most advanced defence programme. But this time, only the title of the June 25 assessment is public: “F-35 Joint Strike Fighter: Update on Production and Modernisation Efforts.”\nThe “GAO has covered the F-35 acquisition annually since Congress mandated reviews beginning in 2005”, said Jon Ludwigson, a director in the agency’s contracting and national security acquisitions office, who supervised the creation of the report.\n“This is the first year that any of our acquisition reviews has been determined to contain CUI” and be restricted from public release, he said.\nThe censored report was still provided to the lawmakers on Congress’s four defence committees and continued “on our path of providing an update to the defence committees on the progress of F-35 modernisation”."
+    }
+  ]
+}
