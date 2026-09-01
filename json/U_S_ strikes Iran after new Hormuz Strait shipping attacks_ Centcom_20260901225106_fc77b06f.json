@@ -1,0 +1,46 @@
+{
+  "story_id": "U_S_ strikes Iran after new Hormuz Strait shipping attacks_ Centcom_20260901225106_fc77b06f",
+  "metadata": {
+    "title": "U.S. strikes Iran after new Hormuz Strait shipping attacks: Centcom",
+    "timestamp": "2026-09-01T22:51:30.374700",
+    "url": "https://ground.news/article/us-strikes-iran-after-new-hormuz-strait-shipping-attacks-centcom_260299"
+  },
+  "bias_distribution": {
+    "total_sources": "",
+    "leaning_left": "Center",
+    "center": "Right",
+    "leaning_right": ""
+  },
+  "sources": [
+    {
+      "news_title": "Way Too Early with Ali Vitali",
+      "news_link": "https://open.spotify.com/episode/2vffjhm4LJ5d8uusjgiYeV",
+      "bias": "unknown",
+      "text": "September 1, 2026 – 5am:\n Army Secretary Dan Driscoll resigns\n Trump downplays resumption of Iran strikes\n Bessent looks to G20 Summit allies for Iran sanctions support\n Bessent: Canada too small to be in trade war with U.S.\n Supreme Court allows Trump to continue ballroom construction"
+    },
+    {
+      "news_title": "",
+      "news_link": "https://www.fox21news.com/news/national/ap-the-latest-army-secretary-dan-driscoll-is-stepping-down-white-house-says",
+      "bias": "unknown",
+      "text": null
+    },
+    {
+      "news_title": "",
+      "news_link": "https://www.aa.com.tr/en/americas/us-forces-begin-strikes-on-irans-revolutionary-guard-targets-centcom/4044321",
+      "bias": "unknown",
+      "text": "Merve Aydogan\n01 September 2026•Update: 01 September 2026\nThe US Central Command (CENTCOM) said Tuesday that American forces began striking Islamic Revolutionary Guard Corps (IRGC) targets in Iran.\n\"Today at 12 p.m. ET, U.S. forces began striking Islamic Revolutionary Guard Corps (IRGC) targets in Iran,\" CENTCOM said in a post on US social media platform X.\nThe command also noted that \"the strikes follow recent attempted attacks by the IRGC against commercial shipping in the Strait of Hormuz and against American service members deployed to the region.\"\nBefore the CENTCOM announcement, Axios also reported the new strikes, citing US officials.\nTensions between Tehran and Washington have remained high since the war began with strikes on Iran in late February.\nA framework deal was signed in June through Pakistani and Qatari mediation.\nThe US began a two-week bombing campaign in July and reimposed a naval blockade after differences over navigation in the strait."
+    },
+    {
+      "news_title": "",
+      "news_link": "https://www.washingtontimes.com/news/2026/sep/1/us-strikes-irgc-targets-iran-attempted-attacks-vessels-strait-hormuz",
+      "bias": "unknown",
+      "text": null
+    },
+    {
+      "news_title": "",
+      "news_link": "https://www.politico.com/news/2026/09/01/us-iran-war-strikes",
+      "bias": "unknown",
+      "text": null
+    }
+  ]
+}
