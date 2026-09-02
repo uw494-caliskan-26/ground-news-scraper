@@ -1,0 +1,28 @@
+{
+  "story_id": "Boeing paid _3_1 million fine to FAA over widespread safety violations_20260902225719_aaf98d81",
+  "metadata": {
+    "title": "Boeing paid $3.1 million fine to FAA over widespread safety violations",
+    "timestamp": "2026-09-02T22:57:39.211629",
+    "url": "https://ground.news/article/boeing-paid-31-million-fine-to-faa-over-widespread-safety-violations"
+  },
+  "bias_distribution": {
+    "total_sources": "",
+    "leaning_left": "Center",
+    "center": "7",
+    "leaning_right": "2"
+  },
+  "sources": [
+    {
+      "news_title": "Boeing paid $3.1 million FAA fine over safety violations",
+      "news_link": "https://seekingalpha.com/news/4639661-boeing-paid-3_1-million-faa-fine-over-safety-violations",
+      "bias": "Lean Right",
+      "text": null
+    },
+    {
+      "news_title": "Boeing paid $3.1 million fine to FAA over widespread safety violations",
+      "news_link": "https://www.reuters.com/world/boeing-paid-31-million-fine-faa-over-widespread-safety-violations-2026-09-02",
+      "bias": "Center",
+      "text": null
+    }
+  ]
+}
