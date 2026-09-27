@@ -1,0 +1,34 @@
+{
+  "story_id": "OpenAI says its bots accessed public data from multiple US government agencies w_20260927232548_8f0a3d67",
+  "metadata": {
+    "title": "OpenAI says its bots accessed public data from multiple US government agencies without its knowledge",
+    "timestamp": "2026-09-27T23:26:09.814868",
+    "url": "https://ground.news/article/openai-says-its-bots-accessed-public-data-from-multiple-us-government-agencies-without-its-knowledge_1e0e1b"
+  },
+  "bias_distribution": {
+    "total_sources": "",
+    "leaning_left": "Center",
+    "center": "Right",
+    "leaning_right": ""
+  },
+  "sources": [
+    {
+      "news_title": "OpenAI said its review found no nonpublic data access, but researchers said one agent used exposed credentials and another tried to breach an Education Department site.",
+      "news_link": "https://www.youtube.com/watch",
+      "bias": "unknown",
+      "text": "About\nPress\nCopyright\nContact us\nCreators\nAdvertise\nDevelopers\nTerms\nPrivacy\nPolicy & Safety\nHow YouTube works\nTest new features\nNFL Sunday Ticket\n© 2026 Google LLC"
+    },
+    {
+      "news_title": "",
+      "news_link": "https://sfist.com/2026/09/27/openai-says-its-agents-interacted-in-unexpected-ways-with-government-sites",
+      "bias": "unknown",
+      "text": "On Friday, OpenAI announced that an internal review had found instances of its artificial intelligence agents interacting with multiple US government websites in \"unexpected ways.\" The targeted websites include two for the Securities and Exchange Commission and one tied to US Census Bureau data.\nAs KPIX reports, the AI tech giant acknowledged that its models had accessed publicly available information on these sites but claim they did not find any evidence of rogue agents using SEC credentials or making any changes to the sites' data and systems.\nIn a statement, OpenAI spokesperson Liz Bourgeois said its lab is continuing to review \"misaligned model activity\" — aka instances of AI systems behaving in undesired ways.\nPer KPIX, Bourgeois also stated that OpenAI is actively notifying organizations whenever it identifies a potential impact to their systems.\nIn a post made to the social media platform X on Friday, OpenAI's CEO said his company has \"not been as fast as we would have liked\" in reviewing its agents' online access during periods of training and evaluation.\nAltman also reiterated that July's so-called Hugging Face incident — in which two OpenAI models breached the systems of AI repository Hugging Face as the result of relaxed safeguards during an internal cybersecurity evaluation — remains the \"most severe\" event they've encountered so far.\nThere is an extensive and ongoing review related to our agents’ use of internet access during training and evaluation. We’ve been publishing summaries at the link below and will continue to.\nWe have not been as fast as we would have liked but we are trying to balance our desire… https://t.co/8zoMxas5Eq\nOpenAI's latest unsettling disclosure arrives just days after Australia’s prime minister accused OpenAI of not notifying officials for months after its agents breached a non-public area of Australia's national healthcare website earlier this year.\nAs SFist previously reported, those remarks came in a very public forum: Thursday's UN General Assembly in NYC.\nThat incident itself came only a week after California governor Gavin Newsom signed an executive order intended to increase state oversight on artificial intelligence development. The order will, in part, convene a panel of experts to make recommendations on potentially implementing a “kill switch” that could disable rogue agents in an emergency.\nNewsom's actions come at a time of heightened alarm over AI's potential to destroy humanity — a concern raised earlier this month by two Anthropic researchers. These public acknowledgments prompted Anthropic CEO Dario Amodei to call for a global slowdown on AI development. The sentiment was quickly co-signed by OpenAI CEO Sam Altman and X owner Elon Musk.\nKPIX further reports that AI evaluator and research lab Transluce conducted an independent investigation and found that agents \"appearing to originate from OpenAI\" also attempted a \"rudimentary\" — but ultimately unsuccessful — hack on the website for the Department of Education's civil rights office.\nJoin the conversation\nComments\nComments load automatically as this section approaches."
+    },
+    {
+      "news_title": "",
+      "news_link": "https://seekingalpha.com/news/4647382-openai-pauses-training-of-latest-models-after-agents-probed-u-s-government-sites",
+      "bias": "unknown",
+      "text": null
+    }
+  ]
+}
