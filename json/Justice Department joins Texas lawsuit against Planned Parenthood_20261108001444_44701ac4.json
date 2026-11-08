@@ -1,0 +1,28 @@
+{
+  "story_id": "Justice Department joins Texas lawsuit against Planned Parenthood_20261108001444_44701ac4",
+  "metadata": {
+    "title": "Justice Department joins Texas lawsuit against Planned Parenthood",
+    "timestamp": "2026-11-08T00:15:04.136236",
+    "url": "https://ground.news/article/justice-department-joins-texas-lawsuit-against-planned-parenthood"
+  },
+  "bias_distribution": {
+    "total_sources": "",
+    "leaning_left": "Center",
+    "center": "3",
+    "leaning_right": "2"
+  },
+  "sources": [
+    {
+      "news_title": "DOJ Moves to Join Texas Planned Parenthood Fraud Suit",
+      "news_link": "https://www.reuters.com/legal/government/justice-department-joins-texas-lawsuit-against-planned-parenthood-2026-11-07",
+      "bias": "Right",
+      "text": null
+    },
+    {
+      "news_title": "DOJ Moves to Join Texas Planned Parenthood Fraud Suit",
+      "news_link": "https://www.newsmax.com/newsfront/planned-parenthood-justice-department-ken-paxton/2026/11/07/id/1275517",
+      "bias": "Right",
+      "text": null
+    }
+  ]
+}
