@@ -1,0 +1,28 @@
+{
+  "story_id": "US Fed tells regional staff to expect lower pay increases in 2027_ Bloomberg New_20261120021046_4b3a7071",
+  "metadata": {
+    "title": "US Fed tells regional staff to expect lower pay increases in 2027, Bloomberg News reports",
+    "timestamp": "2026-11-20T02:11:06.061075",
+    "url": "https://ground.news/article/us-fed-tells-regional-staff-to-expect-lower-pay-increases-in-2027-bloomberg-news-reports"
+  },
+  "bias_distribution": {
+    "total_sources": "",
+    "leaning_left": "Center",
+    "center": "5",
+    "leaning_right": "2"
+  },
+  "sources": [
+    {
+      "news_title": "Fed Tells Regional Staff to Expect Lower Pay Increases in 2027",
+      "news_link": "https://www.reuters.com/business/world-at-work/us-fed-tells-regional-staff-expect-lower-pay-increases-2027-bloomberg-news-2026-11-19",
+      "bias": "Center",
+      "text": null
+    },
+    {
+      "news_title": "Fed Tells Regional Staff to Expect Lower Pay Increases in 2027",
+      "news_link": "https://www.bloomberg.com/news/articles/2026-11-19/fed-tells-regional-staff-to-expect-lower-pay-increases-in-2027",
+      "bias": "Center",
+      "text": null
+    }
+  ]
+}
